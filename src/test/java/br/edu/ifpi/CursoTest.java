@@ -1,6 +1,15 @@
 package br.edu.ifpi;
 
 public class CursoTest {
+  public String nome;
+  public Boolean status;
+  public int cargaHoraria;
+  
+  public CursoTest(String nome, Boolean status, int cargaHoraria) {
+    this.nome = nome;
+    this.status = status;
+    this.cargaHoraria = cargaHoraria;
+}
 
   // Curso cursoPadrao = null;
 
