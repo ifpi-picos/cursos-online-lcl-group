@@ -3,7 +3,9 @@ package br.edu.ifpi.dao;
 import java.sql.Connection;
 import java.util.List;
 
-public class CursoDao implements Dao<CursoDao>{
+import br.edu.ifpi.entidades.Curso;
+
+public class CursoDao implements Dao<Curso>{
       private Connection conexao;
 
       public CursoDao(Connection conexao) {
