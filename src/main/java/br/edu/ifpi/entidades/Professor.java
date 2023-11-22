@@ -1,8 +1,8 @@
 package br.edu.ifpi.entidades;
 
 public class Professor {
+    private int idProfessor;
     private String nome;
-    private int id;
     private String email;
     
 
@@ -11,9 +11,9 @@ public class Professor {
         this.email = email;
     }
 
-    public Professor(String nome, int id, String email) {
+    public Professor(String nome, int idProfessor, String email) {
+        this.idProfessor = idProfessor;
         this.nome = nome;
-        this.id = id;
         this.email = email;
     }
     
@@ -21,19 +21,19 @@ public class Professor {
             return nome;
         }
 
-        public void setNome() {
+        public void setNome(String nome) {
             this.nome = nome;
         }
 
-        public int getId() {
-            return id;
+        public int getIdProfessor() {
+            return idProfessor;
         }
 
         public String getEmail() {
             return email;
         }
 
-        public void setEmail() {
+        public void setEmail(String email) {
             this.email = email;
         }
 
