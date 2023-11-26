@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.ifpi.entidades.Curso;
 import br.edu.ifpi.entidades.CursoAluno;
 import br.edu.ifpi.entidades.Professor;
 
@@ -119,6 +121,33 @@ public class ProfessorDao implements Dao<Professor> {
   }
 
   // Fazer método para retornar os cursos ministrados pelo professor
-  /*public List<Curso> cursosMinistrados(Professor professor) {
-  }*/
+  public List<Curso> cursosMinistrados(Professor professor) {
+    List<Curso> cursos = new ArrayList<>();
+    try { PreparedStatement stm = conexao.prepareStatement("SELECT curso.nome as nome, curso.carga_horaria as carga_horaria, curso.status as status, curso.id as id " +
+    "FROM curso " +
+    "WHERE curso.id_professor = ?");
+      stm.setInt(1, professor.getId());
+
+      java.sql.ResultSet resultSet = stm.executeQuery();
+
+      System.out.println("\nLista de cursos:");
+      while (resultSet.next()) {
+        String nome = resultSet.getString("nome");
+        int cargaHoraria = resultSet.getInt("carga_horaria");
+        String status = resultSet.getString("status");
+
+        System.out.println(
+            nome + " | " +
+            cargaHoraria + " | " +
+            status
+            );
+      }
+        
+    } catch (SQLException e) {
+        System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return cursos;
+  }
 }

@@ -102,5 +102,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
     }
 
     // Criar método para visualizar boletim do aluno
+    public List<CursoAluno> consultarBoletimAluno(Aluno aluno) {
+    }
 
 }

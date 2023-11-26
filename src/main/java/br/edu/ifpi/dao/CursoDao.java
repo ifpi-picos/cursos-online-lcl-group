@@ -106,4 +106,18 @@ public class CursoDao implements Dao<Curso>{
 
         return 0;
     }
+
+    public void matricularAlunoEmCurso(int idAluno, int idCurso) {
+        try (Connection connection = Conexao.getConnection();
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO curso_aluno (id_curso, id_aluno) VALUES (?, ?)")) {
+
+            statement.setInt(1, idCurso);
+            statement.setInt(2, idAluno);
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao matricular o aluno no curso", e);
+        }
+    }
 }
