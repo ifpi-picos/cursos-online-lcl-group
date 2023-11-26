@@ -1,5 +1,7 @@
 package br.edu.ifpi.entidades;
 
+import java.sql.Connection;
+
 import br.edu.ifpi.enums.StatusMatricula;
 
 public class CursoAluno {
@@ -13,6 +15,12 @@ public class CursoAluno {
         this.aluno = aluno;
         this.status = status;
         this.nota = nota;
+    }
+
+    public CursoAluno(Connection connection) {
+    }
+
+    public CursoAluno(Curso curso2, Aluno aluno2) {
     }
 
     public Curso getCurso() {
@@ -43,4 +51,14 @@ public class CursoAluno {
         return nota;
     }
 
+    public void consultarBoletimAluno(Aluno aluno2) {
+    }
+
+    public int getIdCurso() {
+        return 0;
+    }
+
+    public int getIdAluno() {
+        return 0;
+    }
 }

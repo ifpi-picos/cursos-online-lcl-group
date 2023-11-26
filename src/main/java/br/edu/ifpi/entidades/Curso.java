@@ -3,7 +3,7 @@ package br.edu.ifpi.entidades;
 import br.edu.ifpi.enums.StatusCurso;
 
 public class Curso {
-    private String idCurso;
+    private int idCurso;
     private String nome;
     private int cargaHoraria;
     private StatusCurso status;
@@ -16,7 +16,7 @@ public class Curso {
         this.professor = professor;
     }
 
-    public Curso(String idCurso, String nome, int cargaHoraria, StatusCurso status, Professor professor) {
+    public Curso(int idCurso, String nome, int cargaHoraria, StatusCurso status, Professor professor) {
         this.idCurso = idCurso;
         this.nome = nome;
         this.cargaHoraria = cargaHoraria;
@@ -24,8 +24,18 @@ public class Curso {
         this.professor = professor;
     }
 
-    public String getId() {
+    public Curso(int int1, String string, StatusCurso valueOf, int int2) {
+    }
+
+    public Curso(int idCurso2, Object object, Object object2, int idAluno, Object object3) {
+    }
+
+    public int getId() {
         return idCurso;
+    }
+
+    public void setId(int idCurso) {
+        this.idCurso = idCurso;
     }
 
     public String getNome() {
@@ -60,7 +70,8 @@ public class Curso {
         this.professor = professor;
     }
 
-    
-    
+    public String getStatusCurso() {
+        return null;
+    }
     
 }

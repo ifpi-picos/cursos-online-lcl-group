@@ -1,7 +1,7 @@
 package br.edu.ifpi;
 
 public class CursoTest {
-  private String nome;
+  /*private String nome;
   private Boolean status;
   private int cargaHoraria;
   
@@ -9,7 +9,7 @@ public class CursoTest {
     this.nome = nome;
     this.status = status;
     this.cargaHoraria = cargaHoraria;
-}
+}*/
 
   // Curso cursoPadrao = null;
 

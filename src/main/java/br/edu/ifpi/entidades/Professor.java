@@ -17,6 +17,9 @@ public class Professor {
         this.email = email;
     }
     
+        public Professor(int int1, String string, String string2) {
+    }
+
         public String getNome(){
             return nome;
         }
@@ -35,6 +38,10 @@ public class Professor {
 
         public void setEmail(String email) {
             this.email = email;
+        }
+
+        public int getId() {
+            return 0;
         }
 
 

@@ -1,25 +1,30 @@
 package br.edu.ifpi.entidades;
+import java.sql.SQLException;
+
+import br.edu.ifpi.dao.Conexao;
+import br.edu.ifpi.enums.StatusAluno;
 
 public class Aluno {
     private int idAluno;
     private String nome;
     private String email;
-    private Curso curso;
-    private String status;
+    private StatusAluno status;
 
-    public Aluno(String nome, String email, Curso curso, String status) {
-        this.nome = nome;
-        this.email = email;
-        this.curso = curso;
-        this.status = status;
-    }
-    
-    public Aluno( int idAluno, String nome, String email, Curso curso, String status) {
+    public Aluno(int idAluno ,String nome, String email, StatusAluno status) {
         this.idAluno = idAluno;
         this.nome = nome;
         this.email = email;
-        this.curso = curso;
         this.status = status;   
+    }
+
+    public Aluno(String nome, String email, StatusAluno status) {
+        this.nome = nome;
+        this.email = email;
+        this.status = status;
+    }
+
+    public int getid() {
+        return idAluno;
     }
 
     public String getNome() {
@@ -28,10 +33,6 @@ public class Aluno {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-    
-    public int getIdAluno() {
-            return idAluno;
     }
 
     public String getEmail() {
@@ -42,25 +43,22 @@ public class Aluno {
         this.email = email;
     }
 
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
-
-    public void setIdAluno(int idAluno) {
-        this.idAluno = idAluno;
-    }
 
     public String getStatus() {
-        return status;
+        return this.status == StatusAluno.ATIVO? "ATIVO" : "INATIVO";    
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusAluno status) {
         this.status = status;
     }
-    
+
+    public void gerarBoletim(Aluno aluno) throws SQLException{
+        CursoAluno cursoAlunoDao = new CursoAluno(Conexao.getConnection());
+        cursoAlunoDao.consultarBoletimAluno(aluno);
+    }
+
+    public int getId() {
+        return 0;
+    }
     
 }

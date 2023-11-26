@@ -13,4 +13,11 @@ public class Conexao {
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
+
+    public static Connection getConexao() {
+        return null;
+    }
+
+    public static void fecharConexao(Connection conexao) {
+    }
 }
