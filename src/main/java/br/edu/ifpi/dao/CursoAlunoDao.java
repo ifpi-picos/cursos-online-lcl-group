@@ -137,24 +137,45 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
 
     // Criação do método para exibir a lista de alunos com suas notas de um curso específico.
     public void consultarPorCurso(Curso curso) throws SQLException {
-    String sql = "SELECT curso_aluno.nota as nota, aluno.nome as nome " +
-                 "FROM curso_aluno " +
-                 "JOIN aluno ON aluno.id = curso_aluno.id_aluno " +
-                 "WHERE curso_aluno.id_curso = ?";
+        String sql = "SELECT curso_aluno.nota as nota, aluno.nome as nome " +
+                    "FROM curso_aluno " +
+                    "JOIN aluno ON aluno.id = curso_aluno.id_aluno " +
+                    "WHERE curso_aluno.id_curso = ?";
 
-    PreparedStatement stm = conexao.prepareStatement(sql);
-    stm.setInt(1, curso.getId());
-    ResultSet resultSet = stm.executeQuery();
+        PreparedStatement stm = conexao.prepareStatement(sql);
+        stm.setInt(1, curso.getId());
+        ResultSet resultSet = stm.executeQuery();
 
-    System.out.println("\n______ Lista de Alunos ______");
-    while (resultSet.next()) {
-        String nomeAluno = resultSet.getString("nome");
-        Double nota = resultSet.getDouble("nota");
+        System.out.println("\n______ Lista de Alunos ______");
+        while (resultSet.next()) {
+            String nomeAluno = resultSet.getString("nome");
+            Double nota = resultSet.getDouble("nota");
 
-        System.out.println(nomeAluno + " | " + nota);
-    
+            System.out.println(nomeAluno + " | " + nota);
+        
         }
     }
 
+    public void perfilAluno(Aluno aluno) throws SQLException {
+        String sql = "SELECT id, nome, email FROM aluno WHERE id = ?";
+    
+        try (PreparedStatement stm = conexao.prepareStatement(sql)) {
+            stm.setInt(1, aluno.getId());
+            ResultSet resultSet = stm.executeQuery();
+    
+            System.out.println("\n______ Perfil do Aluno ______");
+            while (resultSet.next()) {
+                int idAluno = resultSet.getInt("id");
+                String nomeAluno = resultSet.getString("nome");
+                String emailAluno = resultSet.getString("email");
+    
+                System.out.println("Nome: " + nomeAluno + " | " + "Id: " + idAluno + " | " + "Email: " + emailAluno);
+            }
+    
+            this.consultarBoletimAluno(aluno);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }    
 }
 
