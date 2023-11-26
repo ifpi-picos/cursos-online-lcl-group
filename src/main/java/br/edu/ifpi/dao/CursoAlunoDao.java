@@ -101,8 +101,60 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         return 0;
     }
 
-    // Criar método para visualizar boletim do aluno
+    // Criação do método para visualizar boletim do aluno
     public List<CursoAluno> consultarBoletimAluno(Aluno aluno) {
+            String sql = "SELECT curso.nome as nome, curso_aluno.nota as nota " +
+                         "FROM curso_aluno " +
+                         "JOIN curso ON curso.id = curso_aluno.id_curso " +
+                         "WHERE curso_aluno.id_aluno = ?";
+        
+            List<CursoAluno> cursos = new ArrayList<>();
+        
+            try {
+                PreparedStatement stm = conexao.prepareStatement(sql);
+                stm.setInt(1, aluno.getId());
+                ResultSet resultSet = stm.executeQuery();
+                AutenticacaoDao autenticacaoDao = new AutenticacaoDao(conexao);
+        
+                System.out.println("\n----- Rendimento -----");
+                while (resultSet.next()) {
+                    String nomeCurso = resultSet.getString("nome");
+                    Curso curso = autenticacaoDao.autenticarCurso(nomeCurso);
+        
+                    Double nota = resultSet.getDouble("nota");
+                    cursos.add(new CursoAluno(curso, aluno));
+                    System.out.println(curso.getNome() + " | " + nota);
+                }
+        
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        
+            return cursos;
+        }
+
+    // Criação do método para exibir a lista de alunos com suas notas de um curso específico.
+    public void consultarPorCurso(Curso curso) throws SQLException {
+    String sql = "SELECT curso_aluno.nota as nota, aluno.nome as nome " +
+                 "FROM curso_aluno " +
+                 "JOIN aluno ON aluno.id = curso_aluno.id_aluno " +
+                 "WHERE curso_aluno.id_curso = ?";
+
+    PreparedStatement stm = conexao.prepareStatement(sql);
+    stm.setInt(1, curso.getId());
+    ResultSet resultSet = stm.executeQuery();
+
+    System.out.println("\n______ Lista de Alunos ______");
+    while (resultSet.next()) {
+        String nomeAluno = resultSet.getString("nome");
+        Double nota = resultSet.getDouble("nota");
+
+        System.out.println(nomeAluno + " | " + nota);
+    
+        }
     }
 
 }
+
