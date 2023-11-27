@@ -44,7 +44,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         try (PreparedStatement stm = conexao.prepareStatement("SELECT * FROM curso_aluno order by id asc")) {
             ResultSet resultSet = stm.executeQuery();
 
-            System.out.println("\n----- Lista de cursos -----");
+            System.out.println("\n ______ Lista de cursos ______");
             while (resultSet.next()) {
                 int idCurso = resultSet.getInt("id_curso");
                 int idAluno = resultSet.getInt("id_aluno");
@@ -116,7 +116,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
                 ResultSet resultSet = stm.executeQuery();
                 AutenticacaoDao autenticacaoDao = new AutenticacaoDao(conexao);
         
-                System.out.println("\n----- Rendimento -----");
+                System.out.println("\n______ Rendimento ______");
                 while (resultSet.next()) {
                     String nomeCurso = resultSet.getString("nome");
                     Curso curso = autenticacaoDao.autenticarCurso(nomeCurso);

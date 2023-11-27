@@ -23,6 +23,9 @@ public class CursoAluno {
     public CursoAluno(Curso curso2, Aluno aluno2) {
     }
 
+    public CursoAluno(Curso curso2, Aluno aluno2, Double nota2) {
+    }
+
     public Curso getCurso() {
         return curso;
     }

@@ -101,5 +101,9 @@ public class AutenticacaoDao {
             System.out.println("Conexão fechada com sucesso!");
         }
     }
+
+    public static Curso autenticarCurso(int idCurso) {
+        return null;
+    }
 }
 

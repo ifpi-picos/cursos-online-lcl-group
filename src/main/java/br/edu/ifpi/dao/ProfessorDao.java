@@ -44,7 +44,7 @@ public class ProfessorDao implements Dao<Professor> {
         try (PreparedStatement stm = conexao.prepareStatement("SELECT * FROM professor order by id asc")) {
             ResultSet resultSet = stm.executeQuery();
 
-            System.out.println("\n----- Lista de professores -----");
+            System.out.println("\n ______ Lista de professores ______");
             while (resultSet.next()) {
                 int idProfessor = resultSet.getInt("id");
                 String nome = resultSet.getString("nome");
