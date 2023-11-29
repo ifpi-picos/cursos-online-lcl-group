@@ -14,7 +14,7 @@ import br.edu.ifpi.entidades.Professor;
 public class App {
     public static void main(String[] args) {
         try {
-            Connection conexao = Conexao.getConexao();
+            Connection conexao = Conexao.getConnection();
             AlunoDao alunoDao = new AlunoDao(conexao);
             ProfessorDao professorDao = new ProfessorDao(conexao);
             AutenticacaoDao autenticacaoDao = new AutenticacaoDao(conexao);
@@ -24,7 +24,6 @@ public class App {
 
             alunoDao.someMethod();
 
-            Conexao.fecharConexao(conexao);
         } catch (SQLException e) {
             e.printStackTrace();
         }

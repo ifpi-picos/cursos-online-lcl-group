@@ -176,6 +176,34 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }    
+    } 
+    
+    public void visualizarqttdAlunosPorCurso(Curso curso) throws SQLException{
+        String sql = "SELECT COUNT(id_aluno) as qttd_alunos FROM curso_aluno WHERE id_curso = ?";
+        PreparedStatement stm = conexao.prepareStatement(sql);
+        stm.setInt(1, curso.getId());
+        ResultSet resultSet = stm.executeQuery();
+
+        System.out.println("\n______ Quantidade de Alunos por Curso ______");
+        while (resultSet.next()) {
+            int qttdAlunos = resultSet.getInt("qttd_alunos");
+
+            System.out.println("Quantidade de alunos: " + qttdAlunos);
+        }
+    }
+
+    public void exibirmediaAlunos (Curso curso) throws SQLException{
+        String sql = "SELECT AVG(nota) as media FROM curso_aluno WHERE id_curso = ?";
+        PreparedStatement stm = conexao.prepareStatement(sql);
+        stm.setInt(1, curso.getId());
+        ResultSet resultSet = stm.executeQuery();
+
+        System.out.println("\n______ Média de Alunos por Curso ______");
+        while (resultSet.next()) {
+            Double mediaAlunos = resultSet.getDouble("media");
+
+            System.out.println("Média de alunos: " + mediaAlunos);
+        }
+    }
 }
 

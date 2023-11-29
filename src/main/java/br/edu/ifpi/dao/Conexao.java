@@ -14,10 +14,5 @@ public class Conexao {
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
 
-    public static Connection getConexao() {
-        return null;
-    }
-
-    public static void fecharConexao(Connection conexao) {
-    }
+    
 }
