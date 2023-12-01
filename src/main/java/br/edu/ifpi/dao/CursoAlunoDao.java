@@ -67,13 +67,26 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
 
     @Override
     public int remover(CursoAluno entidade) {
-		return 0;
+        String sql = "DELETE FROM curso_aluno WHERE id_curso = ? AND id_aluno = ?";
+        
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
+            stm.setInt(1, entidade.getIdCurso());
+            stm.setInt(2, entidade.getIdAluno());
+            int rowsAffected = stm.executeUpdate();
+            System.out.println(rowsAffected);
+            return rowsAffected;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     @Override
     public int alterar(CursoAluno entidade) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'alterar'");
+      return 0;
+      // Método não foi implementado
     }
 
     public void totaldeAlunosMatriculadosCurso(Curso curso) {
@@ -108,6 +121,105 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void porcentagemAlunosAprovados(Curso curso) {
+        String sql = "SELECT COUNT(*) as total, " +
+                "COUNT(CASE WHEN nota >= 7 THEN 1 END) as aprovados " +
+                "FROM curso_aluno " +
+                "WHERE id_curso = ?";
+
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
+            stm.setInt(1, curso.getId());
+            ResultSet resultSet = stm.executeQuery();
+
+            if (resultSet.next()) {
+                int total = resultSet.getInt("total");
+                int aprovados = resultSet.getInt("aprovados");
+                float porcentagem = (aprovados/total) * 100;
+
+                System.out.println("Total de alunos aprovados: " + porcentagem + "%");
+            }
+        } catch (SQLException e) {
+
+        }
+    }
+
+    public void porcentagemAlunosReprovados(Curso curso) {
+        String sql = "SELECT COUNT(*) as total, " +
+                "COUNT(CASE WHEN nota < 7 THEN 1 END) as reprovados " +
+                "FROM curso_aluno " +
+                "WHERE id_curso = ?";
+
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
+            stm.setInt(1, curso.getId());
+            ResultSet resultSet = stm.executeQuery();
+
+            if (resultSet.next()) {
+                int total = resultSet.getInt("total");
+                int reprovados = resultSet.getInt("reprovados");
+                float porcentagem = (reprovados/total) * 100;
+
+                System.out.println("Total de alunos reprovados: " + porcentagem + "%");
+            }
+        } catch (SQLException e) {
+
+        }
+    }
+
+    public void cursosConcluidos (Aluno aluno) throws SQLException {
+        String sql = "SELECT curso.nome as curso_nome " +
+                    "FROM curso_aluno " +
+                    "JOIN curso on curso.id = curso_aluno.id_curso " +
+                    "WHERE curso_aluno.id_aluno = ? AND curso_aluno.nota >= 7";
+
+        PreparedStatement stm = conexao.prepareStatement(sql);
+        stm.setInt(1, aluno.getid());
+        ResultSet resultSet = stm.executeQuery();
+
+        System.out.println("\n_____ Cursos concluídos _____");
+        while (resultSet.next()) {
+            String nomeCurso = resultSet.getString("curso_nome");
+
+            System.out.println(nomeCurso);
+        }
+
+    }
+
+    public void inserirNota(CursoAluno cursoAluno, float nota) {
+        String sql = "UPDATE curso_aluno SET nota = ? WHERE id_curso = ? AND id_aluno = ?";
+
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
+            stm.setFloat(1, nota);
+            stm.setInt(2, cursoAluno.getIdCurso());
+            stm.setInt(3, cursoAluno.getIdAluno());
+            int rowsAffected = stm.executeUpdate();
+            System.out.println(rowsAffected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void VisualizarPerfilAluno(Aluno aluno) throws SQLException {
+        String sql = "SELECT * FROM aluno WHERE id = ?";
+
+        PreparedStatement stm = conexao.prepareStatement(sql);
+        stm.setInt(1, aluno.getid());
+        ResultSet resultSet = stm.executeQuery();
+
+        System.out.println("\n_____ Perfil do aluno _____");
+        while (resultSet.next()) {
+            String nome = resultSet.getString("nome");
+            String email = resultSet.getString("email");
+            String status = resultSet.getString("status");
+
+            System.out.println("Nome: " + nome);
+            System.out.println("Email: " + email);
+            System.out.println("Status: " + status);
         }
     }
 }

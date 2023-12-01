@@ -27,13 +27,17 @@ public class App {
             CursoAlunoDao CursoAlunoDao = new CursoAlunoDao(conexao);
 
             Aluno camilla = autenticacaoDao.autenticarAluno("sapatona@gmail.com");
-            //Professor professorTeste = autenticacaoDao.autenticarProfessor("jesielviana@gmail.com");
+            Aluno alunoTeste = autenticacaoDao.autenticarAluno("americanas@gmail.com");
+            
+            Professor professorTeste = autenticacaoDao.autenticarProfessor("jesielviana@gmail.com");
             //Curso cursoTeste =autenticacaoDao.autenticarCurso("Engenharia de Software");
 
             //alunoTeste.gerarBoletim(alunoTeste);
             //alunoDao.someMethod();
 
             //alunoDao.cadastrar(new Aluno("Livya", "livyakelly@gmail", StatusAluno.ATIVO));
+        
+        
 
 
         } catch (SQLException e) {

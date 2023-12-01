@@ -1,6 +1,7 @@
 package br.edu.ifpi.entidades;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import br.edu.ifpi.enums.StatusMatricula;
 

@@ -79,6 +79,12 @@ public class Curso {
         cursoAlunoDao.cadastrar(cursoAluno);
     }
 
+    public void desmatricularAluno(Aluno aluno) throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        CursoAluno cursoAluno = new CursoAluno(this, aluno);
+        cursoAlunoDao.remover(cursoAluno);
+    }
+
     public void alunosMatriculados() throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.totaldeAlunosMatriculadosCurso(this);
@@ -88,4 +94,16 @@ public class Curso {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.mediaAlunos(this);
     }
+
+    public void porcentagemAlunosAprovados() throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.porcentagemAlunosAprovados(this);
+    }
+
+    public void porcentagemAlunosReprovados() throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.porcentagemAlunosReprovados(this);
+    }
+
+    
 }

@@ -66,7 +66,11 @@ public class AutenticacaoDao {
     }
 
     public Curso autenticarCurso(String nome) {
-        String sql = "SELECT id, nome, status, carga_horaria, id_professor FROM curso WHERE nome = ?";
+        String sql = "SELECT curso.id as curso_id, curso.nome as curso_nome, curso.carga_horaria, curso.status, " +
+                "professor.id as professor_id, professor.nome as professor_nome, professor.email " +
+                "FROM curso " +
+                "JOIN professor ON curso.id_professor = professor.id " +
+                "WHERE curso.nome = ?";
 
         try {
             PreparedStatement stm = conexao.prepareStatement(sql);
@@ -74,12 +78,16 @@ public class AutenticacaoDao {
             ResultSet resultSet = stm.executeQuery();
 
             if (resultSet.next()) {
-                Curso curso = new Curso(
-                        resultSet.getInt("id"),
-                        resultSet.getString("nome"),
-                        StatusCurso.valueOf(resultSet.getString("status")),
-                        resultSet.getInt("carga_horaria"));
-                resultSet.getInt("id_professor");
+                int cursoId = resultSet.getInt("curso_id");
+                String cursoNome = resultSet.getString("curso_nome");
+                int cursoCargaHoraria = resultSet.getInt("carga_horaria");
+                StatusCurso cursoStatus = StatusCurso.valueOf(resultSet.getString("status"));
+                int professorId = resultSet.getInt("professor_id");
+                String professorNome = resultSet.getString("professor_nome");
+                String professorEmail = resultSet.getString("email");
+
+                Professor professor = new Professor(professorNome, professorId, professorEmail);
+                Curso curso = new Curso(cursoId, cursoNome, cursoCargaHoraria, cursoStatus, professor);
 
                 System.out.println("Curso autenticado com sucesso!");
                 return curso;
@@ -91,4 +99,4 @@ public class AutenticacaoDao {
     }
 }
 
-// Livya Kelly ás 00:45 quase desistindo...
+// Livya Kelly ás 03:48 quase desistindo...

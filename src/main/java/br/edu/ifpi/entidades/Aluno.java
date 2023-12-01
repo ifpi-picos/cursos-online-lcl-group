@@ -53,13 +53,29 @@ public class Aluno {
         this.status = status;
     }
 
-    public void gerarBoletim(Aluno aluno) throws SQLException{
-        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
-       // CursoAluno cursoAluno = cursoAlunoDao.consultarBoletimAluno(aluno); 
-    }
-
     public int getId() {
         return 0;
     }
+
+    public void realizarMatricula(Curso curso) throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        CursoAluno cursoAluno = new CursoAluno(curso, this);
+        cursoAlunoDao.cadastrar(cursoAluno);
+    }
+
+    public void cancelarMatricula(Curso curso) throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        CursoAluno cursoAluno = new CursoAluno(curso, this);
+        cursoAlunoDao.remover(cursoAluno);
+    }
+
+    public void cursosConcluidos(Aluno aluno) throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.cursosConcluidos(this);
+    }
+    
+    
+
+     
     
 }
