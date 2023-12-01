@@ -1,5 +1,10 @@
 package br.edu.ifpi.entidades;
 
+import java.sql.SQLException;
+
+import br.edu.ifpi.dao.Conexao;
+import br.edu.ifpi.dao.CursoAlunoDao;
+import br.edu.ifpi.dao.CursoDao;
 import br.edu.ifpi.enums.StatusCurso;
 
 public class Curso {
@@ -22,12 +27,6 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
         this.status = status;
         this.professor = professor;
-    }
-
-    public Curso(int int1, String string, StatusCurso valueOf, int int2) {
-    }
-
-    public Curso(int idCurso2, Object object, Object object2, int idAluno, Object object3) {
     }
 
     public int getId() {
@@ -73,5 +72,20 @@ public class Curso {
     public String getStatusCurso() {
         return null;
     }
-    
+
+    public void matricularAluno(Aluno aluno) throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        CursoAluno cursoAluno = new CursoAluno(this, aluno);
+        cursoAlunoDao.cadastrar(cursoAluno);
+    }
+
+    public void alunosMatriculados() throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.totaldeAlunosMatriculadosCurso(this);
+    }
+
+    public void mediaAlunos() throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.mediaAlunos(this);
+    }
 }

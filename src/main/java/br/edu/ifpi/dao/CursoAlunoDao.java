@@ -20,189 +20,94 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
 
     @Override
     public int cadastrar(CursoAluno cursoAluno) {
-        try (PreparedStatement statement = conexao.prepareStatement("INSERT INTO CURSO_ALUNO (id_curso, id_aluno) VALUES (?,?)")) {
-            statement.setInt(1, cursoAluno.getIdCurso());
-            statement.setInt(2, cursoAluno.getIdAluno());
+        String sql = "INSERT INTO CURSO_ALUNO (id_curso, id) VALUES (?,?)";
 
-            int rowsAffected = statement.executeUpdate();
-            System.err.println(rowsAffected); // 1
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
 
-            System.out.println("Rows affected: " + rowsAffected);
-            return rowsAffected;
+            stm.setInt(1, cursoAluno.getIdCurso());
+            stm.setInt(2, cursoAluno.getIdAluno());
+
+            int row = stm.executeUpdate();
+            System.err.println(row);
+            System.out.println(row); 
+            return row;
+
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+
         } catch (Exception e) {
             e.printStackTrace();
+
         }
         return 0;
+
     }
 
     @Override
     public List<CursoAluno> consultar() {
-        ArrayList<CursoAluno> cursoAlunos = new ArrayList<>();
+        List<CursoAluno> cursosAlunos = new ArrayList<>();
+        String sql = "SELECT * FROM curso_aluno order by id asc";
 
-        try (PreparedStatement stm = conexao.prepareStatement("SELECT * FROM curso_aluno order by id asc")) {
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
             ResultSet resultSet = stm.executeQuery();
 
-            System.out.println("\n ______ Lista de cursos ______");
             while (resultSet.next()) {
                 int idCurso = resultSet.getInt("id_curso");
                 int idAluno = resultSet.getInt("id_aluno");
 
-                cursoAlunos.add(new CursoAluno(new Curso(idCurso, null, null, idAluno, null), new Aluno(idAluno, null, null, null)));
+                System.out.println("id curso: " + idCurso + ", id aluno: " + idAluno);
             }
-
-            return cursoAlunos;
         } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-        } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return null;
+        return cursosAlunos;
     }
 
     @Override
-    public int remover(CursoAluno cursoAluno) {
-        try (PreparedStatement stm = conexao.prepareStatement("DELETE FROM curso_aluno WHERE ID_CURSO = ? AND ID_ALUNO = ?")) {
-            stm.setInt(1, cursoAluno.getIdCurso());
-            stm.setInt(2, cursoAluno.getIdAluno());
-
-            int rowsAffected = stm.executeUpdate();
-            System.err.println(rowsAffected);
-
-            System.out.println(rowsAffected);
-            return rowsAffected;
-        } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return 0;
+    public int remover(CursoAluno entidade) {
+		return 0;
     }
 
     @Override
-    public int alterar(CursoAluno cursoAluno) {
-        try (PreparedStatement stm = conexao.prepareStatement("UPDATE curso_aluno SET id_curso = ? WHERE id_aluno = ?")) {
-            stm.setInt(1, cursoAluno.getIdCurso());
-            stm.setInt(2, cursoAluno.getIdAluno());
-
-            int rowsAffected = stm.executeUpdate();
-            System.out.println(rowsAffected);
-
-            return rowsAffected;
-        } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return 0;
+    public int alterar(CursoAluno entidade) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'alterar'");
     }
 
-    // Criação do método para visualizar boletim do aluno
-    public List<CursoAluno> consultarBoletimAluno(Aluno aluno) {
-            String sql = "SELECT curso.nome as nome, curso_aluno.nota as nota " +
-                         "FROM curso_aluno " +
-                         "JOIN curso ON curso.id = curso_aluno.id_curso " +
-                         "WHERE curso_aluno.id_aluno = ?";
-        
-            List<CursoAluno> cursos = new ArrayList<>();
-        
-            try {
-                PreparedStatement stm = conexao.prepareStatement(sql);
-                stm.setInt(1, aluno.getId());
-                ResultSet resultSet = stm.executeQuery();
-                AutenticacaoDao autenticacaoDao = new AutenticacaoDao(conexao);
-        
-                System.out.println("\n______ Rendimento ______");
-                while (resultSet.next()) {
-                    String nomeCurso = resultSet.getString("nome");
-                    Curso curso = autenticacaoDao.autenticarCurso(nomeCurso);
-        
-                    Double nota = resultSet.getDouble("nota");
-                    cursos.add(new CursoAluno(curso, aluno));
-                    System.out.println(curso.getNome() + " | " + nota);
-                }
-        
-            } catch (SQLException e) {
-                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        
-            return cursos;
-        }
+    public void totaldeAlunosMatriculadosCurso(Curso curso) {
+        String sql = "SELECT COUNT(id_aluno) as alunos FROM curso_aluno WHERE id_curso = ?";
 
-    // Criação do método para exibir a lista de alunos com suas notas de um curso específico.
-    public void consultarPorCurso(Curso curso) throws SQLException {
-        String sql = "SELECT curso_aluno.nota as nota, aluno.nome as nome " +
-                    "FROM curso_aluno " +
-                    "JOIN aluno ON aluno.id = curso_aluno.id_aluno " +
-                    "WHERE curso_aluno.id_curso = ?";
-
-        PreparedStatement stm = conexao.prepareStatement(sql);
-        stm.setInt(1, curso.getId());
-        ResultSet resultSet = stm.executeQuery();
-
-        System.out.println("\n______ Lista de Alunos ______");
-        while (resultSet.next()) {
-            String nomeAluno = resultSet.getString("nome");
-            Double nota = resultSet.getDouble("nota");
-
-            System.out.println(nomeAluno + " | " + nota);
-        
-        }
-    }
-
-    public void perfilAluno(Aluno aluno) throws SQLException {
-        String sql = "SELECT id, nome, email FROM aluno WHERE id = ?";
-    
-        try (PreparedStatement stm = conexao.prepareStatement(sql)) {
-            stm.setInt(1, aluno.getId());
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
+            stm.setInt(1, curso.getId());
             ResultSet resultSet = stm.executeQuery();
-    
-            System.out.println("\n______ Perfil do Aluno ______");
-            while (resultSet.next()) {
-                int idAluno = resultSet.getInt("id");
-                String nomeAluno = resultSet.getString("nome");
-                String emailAluno = resultSet.getString("email");
-    
-                System.out.println("Nome: " + nomeAluno + " | " + "Id: " + idAluno + " | " + "Email: " + emailAluno);
+
+            if (resultSet.next()) {
+                int total = resultSet.getInt("alunos");
+                System.out.println("Total de alunos matriculados: " + total);
             }
-    
-            this.consultarBoletimAluno(aluno);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    } 
-    
-    public void visualizarqttdAlunosPorCurso(Curso curso) throws SQLException{
-        String sql = "SELECT COUNT(id_aluno) as qttd_alunos FROM curso_aluno WHERE id_curso = ?";
-        PreparedStatement stm = conexao.prepareStatement(sql);
-        stm.setInt(1, curso.getId());
-        ResultSet resultSet = stm.executeQuery();
-
-        System.out.println("\n______ Quantidade de Alunos por Curso ______");
-        while (resultSet.next()) {
-            int qttdAlunos = resultSet.getInt("qttd_alunos");
-
-            System.out.println("Quantidade de alunos: " + qttdAlunos);
-        }
     }
 
-    public void exibirmediaAlunos (Curso curso) throws SQLException{
+    public void mediaAlunos(Curso curso){
         String sql = "SELECT AVG(nota) as media FROM curso_aluno WHERE id_curso = ?";
-        PreparedStatement stm = conexao.prepareStatement(sql);
-        stm.setInt(1, curso.getId());
-        ResultSet resultSet = stm.executeQuery();
 
-        System.out.println("\n______ Média de Alunos por Curso ______");
-        while (resultSet.next()) {
-            Double mediaAlunos = resultSet.getDouble("media");
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
+            stm.setInt(1, curso.getId());
+            ResultSet resultSet = stm.executeQuery();
 
-            System.out.println("Média de alunos: " + mediaAlunos);
+            if (resultSet.next()) {
+                float media = resultSet.getInt("media");
+                System.out.println("Media de alunos: " + media);
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
