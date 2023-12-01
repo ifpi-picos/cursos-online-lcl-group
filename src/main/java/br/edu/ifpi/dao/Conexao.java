@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class Conexao {
 
+<<<<<<< HEAD
     public static Connection getConexao() {
         Connection conexacao = null;
         try {
@@ -16,6 +17,14 @@ public class Conexao {
             e.printStackTrace();
         }
         return conexacao;
+=======
+    private static final String URL = "jdbc:postgresql://localhost:5433/sistemaacademico";
+    private static final String USERNAME = "postgres";
+    private static final String PASSWORD = "0407";
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+>>>>>>> f6f675bb211024fffb32b93dae5b8f076d0f3e94
     }
 
 

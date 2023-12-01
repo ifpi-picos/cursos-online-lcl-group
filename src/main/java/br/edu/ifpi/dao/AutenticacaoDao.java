@@ -18,92 +18,85 @@ public class AutenticacaoDao {
         this.conexao = conexao;
     }
 
-    public Aluno autenticarAluno(String email) throws SQLException {
+    public Aluno autenticarAluno(String email) {
         String sql = "SELECT id, nome, email, status FROM aluno WHERE email = ?";
 
-        try (PreparedStatement stm = conexao.prepareStatement(sql)) {
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
             stm.setString(1, email);
-            try (ResultSet resultSet = stm.executeQuery()) {
-                if (resultSet.next()) {
-                    return new Aluno(
-                            resultSet.getInt("id"),
-                            resultSet.getString("nome"),
-                            resultSet.getString("email"),
-                            StatusAluno.valueOf(resultSet.getString("status"))
-                    );
-                }
-            }
-        }
+            ResultSet resultSet = stm.executeQuery();
 
-        System.out.println("Aluno não encontrado!");
+            if (resultSet.next()) {
+                Aluno aluno = new Aluno(
+                        resultSet.getInt("id"),
+                        resultSet.getString("nome"),
+                        resultSet.getString("email"),
+                        StatusAluno.valueOf(resultSet.getString("status")));
+
+                System.out.println("Aluno autenticado com sucesso!");
+                return aluno;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
-    public Professor autenticarProfessor(String email) throws SQLException {
+    public Professor autenticarProfessor(String email) {
         String sql = "SELECT id, nome, email FROM professor WHERE email = ?";
 
-        try (PreparedStatement stm = conexao.prepareStatement(sql)) {
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
             stm.setString(1, email);
-            try (ResultSet resultSet = stm.executeQuery()) {
-                if (resultSet.next()) {
-                    return new Professor(
-                            resultSet.getInt("id"),
-                            resultSet.getString("nome"),
-                            resultSet.getString("email")
-                    );
-                }
-            }
-        }
+            ResultSet resultSet = stm.executeQuery();
 
-        System.out.println("Professor não encontrado!");
+            if (resultSet.next()) {
+                Professor professor = new Professor(
+                        resultSet.getString("nome"),
+                        resultSet.getInt("id"),
+                        resultSet.getString("email"));
+
+                System.out.println("Professor autenticado com sucesso!");
+                return professor;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
-    public Curso autenticarCurso(String nomeCurso) throws SQLException {
+    public Curso autenticarCurso(String nome) {
         String sql = "SELECT curso.id as curso_id, curso.nome as curso_nome, curso.carga_horaria, curso.status, " +
                 "professor.id as professor_id, professor.nome as professor_nome, professor.email " +
                 "FROM curso " +
                 "JOIN professor ON curso.id_professor = professor.id " +
                 "WHERE curso.nome = ?";
 
-        try (PreparedStatement stm = conexao.prepareStatement(sql)) {
-            stm.setString(1, nomeCurso);
-            try (ResultSet resultSet = stm.executeQuery()) {
-                if (resultSet.next()) {
-                    Curso curso = new Curso(
-                            resultSet.getInt("curso_id"),
-                            resultSet.getString("curso_nome"),
-                            StatusCurso.valueOf(resultSet.getString("status")),
-                            resultSet.getInt("carga_horaria")
-                    );
+        try {
+            PreparedStatement stm = conexao.prepareStatement(sql);
+            stm.setString(1, nome);
+            ResultSet resultSet = stm.executeQuery();
 
-                    Professor professor = new Professor(
-                            resultSet.getInt("professor_id"),
-                            resultSet.getString("professor_nome"),
-                            resultSet.getString("email")
-                    );
+            if (resultSet.next()) {
+                int cursoId = resultSet.getInt("curso_id");
+                String cursoNome = resultSet.getString("curso_nome");
+                int cursoCargaHoraria = resultSet.getInt("carga_horaria");
+                StatusCurso cursoStatus = StatusCurso.valueOf(resultSet.getString("status"));
+                int professorId = resultSet.getInt("professor_id");
+                String professorNome = resultSet.getString("professor_nome");
+                String professorEmail = resultSet.getString("email");
 
-                    curso.setProfessor(professor);
+                Professor professor = new Professor(professorNome, professorId, professorEmail);
+                Curso curso = new Curso(cursoId, cursoNome, cursoCargaHoraria, cursoStatus, professor);
 
-                    System.out.println("Curso autenticado com sucesso!");
-                    return curso;
-                }
+                System.out.println("Curso autenticado com sucesso!");
+                return curso;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        System.out.println("Curso não encontrado!");
-        return null;
-    }
-
-    public static void fecharConexao(Connection conexao) throws SQLException {
-        if (conexao != null && !conexao.isClosed()) {
-            conexao.close();
-            System.out.println("Conexão fechada com sucesso!");
-        }
-    }
-
-    public static Curso autenticarCurso(int idCurso) {
         return null;
     }
 }
 
+// Livya Kelly ás 04:45 quase desistindo...

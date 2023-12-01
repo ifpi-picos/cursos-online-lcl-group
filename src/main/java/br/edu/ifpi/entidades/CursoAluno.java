@@ -1,7 +1,5 @@
 package br.edu.ifpi.entidades;
 
-import java.sql.Connection;
-
 import br.edu.ifpi.enums.StatusMatricula;
 
 public class CursoAluno {
@@ -10,20 +8,9 @@ public class CursoAluno {
     private StatusMatricula status;
     private boolean nota;
     
-    public CursoAluno(Curso curso, Aluno aluno, StatusMatricula status, boolean nota) {
+    public CursoAluno(Curso curso, Aluno aluno) {
         this.curso = curso;
         this.aluno = aluno;
-        this.status = status;
-        this.nota = nota;
-    }
-
-    public CursoAluno(Connection connection) {
-    }
-
-    public CursoAluno(Curso curso2, Aluno aluno2) {
-    }
-
-    public CursoAluno(Curso curso2, Aluno aluno2, Double nota2) {
     }
 
     public Curso getCurso() {

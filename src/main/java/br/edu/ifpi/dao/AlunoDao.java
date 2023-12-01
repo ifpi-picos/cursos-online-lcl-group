@@ -85,8 +85,5 @@ public class AlunoDao implements Dao<Aluno> {
         }
         return 0;
     }
-
-    public void someMethod() {
-    }
 }
 
