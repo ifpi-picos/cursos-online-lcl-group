@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import br.edu.ifpi.dao.Conexao;
 import br.edu.ifpi.dao.CursoAlunoDao;
-import br.edu.ifpi.dao.CursoDao;
 import br.edu.ifpi.enums.StatusCurso;
 
 public class Curso {

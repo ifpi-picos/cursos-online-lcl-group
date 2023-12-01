@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifpi.entidades.Curso;
-import br.edu.ifpi.entidades.Professor;
 import br.edu.ifpi.enums.StatusCurso;
 
 public class CursoDao implements Dao<Curso> {

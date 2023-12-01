@@ -69,13 +69,19 @@ public class Aluno {
         cursoAlunoDao.remover(cursoAluno);
     }
 
-    public void cursosConcluidos(Aluno aluno) throws SQLException {
+    public void cursosConcluidos() throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.cursosConcluidos(this);
     }
     
-    
+    public void mostrarBoletim() throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.consultarBoletimAluno(this);
+    }
 
-     
-    
+    public void exibirPerfilAluno() throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.VisualizarPerfilAluno(this);
+        cursoAlunoDao.consultarBoletimAluno(this);
+    }
 }

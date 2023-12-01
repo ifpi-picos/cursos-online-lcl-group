@@ -204,6 +204,25 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         }
     }
 
+    public void consultarBoletimAluno(Aluno aluno) throws SQLException {
+        String sql = "SELECT curso.nome as curso_nome, curso_aluno.nota as nota " +
+                    "FROM curso_aluno " +
+                    "JOIN curso on curso.id = curso_aluno.id_curso " +
+                    "WHERE curso_aluno.id_aluno = ?";
+
+        PreparedStatement stm = conexao.prepareStatement(sql);
+        stm.setInt(1, aluno.getid());
+        ResultSet resultSet = stm.executeQuery();
+
+        System.out.println("\n_____ Boletim _____");
+        while (resultSet.next()) {
+            String nomeCurso = resultSet.getString("curso_nome");
+            float nota = resultSet.getFloat("nota");
+
+            System.out.println("Curso: " + nomeCurso + ", nota: " + nota);
+        }
+    }
+
     public void VisualizarPerfilAluno(Aluno aluno) throws SQLException {
         String sql = "SELECT * FROM aluno WHERE id = ?";
 
