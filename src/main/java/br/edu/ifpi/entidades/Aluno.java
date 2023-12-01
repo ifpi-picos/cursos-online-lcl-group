@@ -53,14 +53,11 @@ public class Aluno {
         this.status = status;
     }
 
-<<<<<<< HEAD
     public void gerarBoletim(Aluno aluno) throws SQLException{
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.consultarBoletimAluno(this);
     }
 
-=======
->>>>>>> f6f675bb211024fffb32b93dae5b8f076d0f3e94
     public int getId() {
         return 0;
     }

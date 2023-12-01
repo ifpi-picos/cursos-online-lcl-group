@@ -5,39 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
-
-<<<<<<< HEAD
-    public static Connection getConexao() {
-        Connection conexacao = null;
-        try {
-            conexacao = DriverManager.getConnection("postgres://postgres.eqoonavdkllfswzrsdwu:[YOUR-PASSWORD]@aws-0-sa-east-1.pooler.supabase.com:6543/postgres", "postgres",
-                    "LCLgrupo@01");
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return conexacao;
-=======
-    private static final String URL = "jdbc:postgresql://localhost:5433/sistemaacademico";
-    private static final String USERNAME = "postgres";
-    private static final String PASSWORD = "0407";
+    private static final String URL = "jdbc:postgresql://db.eqoonavdkllfswzrsdwu.supabase.co:5432/postgres";
+    private static final String USER = "postgres";
+    private static final String PASSWORD = "LCLgrupo@01";
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
->>>>>>> f6f675bb211024fffb32b93dae5b8f076d0f3e94
+        return DriverManager.getConnection(URL, USER, PASSWORD);
     }
-
-
-
-
-
-   // private static final String URL = "jdbc:postgresql://localhost:5433/sistemaacademico";
-    //private static final String USERNAME = "postgres";
-    //private static final String PASSWORD = "0407,";
-
-    //public static Connection getConnection() throws SQLException {
-   //     return DriverManager.getConnection(URL, USERNAME, PASSWORD);
-   // }
-
-    
 }

@@ -15,40 +15,21 @@ import br.edu.ifpi.entidades.Aluno;
 import br.edu.ifpi.entidades.Curso;
 import br.edu.ifpi.entidades.CursoAluno;
 import br.edu.ifpi.entidades.Professor;
-<<<<<<< HEAD
-import br.edu.ifpi.supabase.SupabaseClient;
-=======
 import br.edu.ifpi.enums.StatusAluno;
->>>>>>> f6f675bb211024fffb32b93dae5b8f076d0f3e94
+import br.edu.ifpi.enums.StatusCurso;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
-        try {
-            Connection conexao = Conexao.getConnection();
-            AlunoDao alunoDao = new AlunoDao(conexao);
-            CursoDao cursoDao = new CursoDao(conexao);
-            ProfessorDao professorDao = new ProfessorDao(conexao);
-            AutenticacaoDao autenticacaoDao = new AutenticacaoDao(conexao);
-            CursoAlunoDao CursoAlunoDao = new CursoAlunoDao(conexao);
+        Connection conexao = Conexao.getConnection();
+        AlunoDao alunoDao = new AlunoDao(conexao);
+        CursoDao cursoDao = new CursoDao(conexao);
+        ProfessorDao professorDao = new ProfessorDao(conexao);
+        AutenticacaoDao autenticacaoDao = new AutenticacaoDao(conexao);
+        CursoAlunoDao CursoAlunoDao = new CursoAlunoDao(conexao);
 
-            Aluno camilla = autenticacaoDao.autenticarAluno("sapatona@gmail.com");
-            Aluno alunoTeste = autenticacaoDao.autenticarAluno("americanas@gmail.com");
-            
-            Professor professorTeste = autenticacaoDao.autenticarProfessor("jesielviana@gmail.com");
-            //Curso cursoTeste =autenticacaoDao.autenticarCurso("Engenharia de Software");
-
-            //alunoTeste.gerarBoletim(alunoTeste);
-            //alunoDao.someMethod();
-
-            //alunoDao.cadastrar(new Aluno("Livya", "livyakelly@gmail", StatusAluno.ATIVO));
-        
-        
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Aluno camilla = autenticacaoDao.autenticarAluno("camilla@gmail.com");
+        Professor joaoPaulo = autenticacaoDao.autenticarProfessor("joaopaulo@gmail.com");
     }
 
 }
