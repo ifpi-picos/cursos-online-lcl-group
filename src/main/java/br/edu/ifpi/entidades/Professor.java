@@ -47,7 +47,7 @@ public class Professor {
         return 0;
     }
 
-    public void inserirNota(CursoAluno cursoAluno, float nota) throws Exception {
+    public void inserirNota(CursoAluno cursoAluno, Boolean nota) throws Exception {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.inserirNota(cursoAluno, nota);
     }
