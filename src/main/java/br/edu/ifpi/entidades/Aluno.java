@@ -23,9 +23,13 @@ public class Aluno {
         this.email = email;
         this.status = status;
     }
-
-    public int getid() {
+    
+    public int getidAluno() {
         return idAluno;
+    }
+    
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
     }
 
     public String getNome() {
@@ -58,10 +62,6 @@ public class Aluno {
         cursoAlunoDao.consultarBoletimAluno(this);
     }
 
-    public int getId() {
-        return 0;
-    }
-
     public void realizarMatricula(Curso curso) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         CursoAluno cursoAluno = new CursoAluno(curso, this);
@@ -89,4 +89,5 @@ public class Aluno {
         cursoAlunoDao.VisualizarPerfilAluno(this);
         cursoAlunoDao.consultarBoletimAluno(this);
     }
+
 }

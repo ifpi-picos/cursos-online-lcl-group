@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.edu.ifpi.entidades.Aluno;
 import br.edu.ifpi.enums.StatusAluno;
 
@@ -40,17 +42,22 @@ public class AlunoDao implements Dao<Aluno> {
         List<Aluno> alunos = new ArrayList<>();
         try (PreparedStatement stm = conexao.prepareStatement("SELECT * FROM aluno")) {
             ResultSet resultSet = stm.executeQuery();
+
+            System.out.println("\n___________Lista de alunos__________");
             while (resultSet.next()) {
-                Aluno aluno = new Aluno(
-                        resultSet.getInt("id"),
-                        resultSet.getString("nome"),
-                        resultSet.getString("email"),
-                        StatusAluno.valueOf(resultSet.getString("status"))
-                );
+                int idAluno = resultSet.getInt("id");
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String status = resultSet.getString("status");
+
+                Aluno aluno = new Aluno(idAluno, nome, email, null);
                 alunos.add(aluno);
+                System.out.println(idAluno + " | " + nome + " | " + email + " | " + status);
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Erro ao listar alunos.");
         }
         return alunos;
     }
@@ -58,13 +65,16 @@ public class AlunoDao implements Dao<Aluno> {
 
     @Override
     public int remover(Aluno aluno) {
-        try (PreparedStatement stm = conexao.prepareStatement("DELETE FROM aluno WHERE id = ?")) {
-            stm.setInt(1, aluno.getId());
-            int rowsAffected = stm.executeUpdate();
-            System.out.println(rowsAffected);
-            return rowsAffected;
-        } catch (SQLException e) {
+        String sqlDelete = "DELETE FROM aluno WHERE ID = ?";
+
+        try {
+
+            PreparedStatement stmt = conexao.prepareStatement(sqlDelete);
+            stmt.setInt(1, aluno.getidAluno());
+            stmt.executeUpdate();
+        } catch (Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao tentar remover o aluno: " + e.getMessage());
         }
         return 0;
     }
@@ -75,7 +85,7 @@ public class AlunoDao implements Dao<Aluno> {
             stm.setString(1, aluno.getNome());
             stm.setString(2, aluno.getEmail());
             stm.setString(3, aluno.getStatus());
-            stm.setInt(4, aluno.getId());
+            stm.setInt(4, aluno.getidAluno());
 
             int rowsAffected = stm.executeUpdate();
             System.out.println(rowsAffected);

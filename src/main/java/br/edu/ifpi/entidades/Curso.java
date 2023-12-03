@@ -68,8 +68,8 @@ public class Curso {
         this.professor = professor;
     }
 
-    public String getStatusCurso() {
-        return null;
+  public String getStatusCurso() {
+    return status.toString();
     }
 
     public void matricularAluno(Aluno aluno) throws SQLException {

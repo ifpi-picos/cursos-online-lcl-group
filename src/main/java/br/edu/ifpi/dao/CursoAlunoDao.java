@@ -177,7 +177,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
                     "WHERE curso_aluno.id_aluno = ? AND curso_aluno.nota >= 7";
 
         PreparedStatement stm = conexao.prepareStatement(sql);
-        stm.setInt(1, aluno.getid());
+        stm.setInt(1, aluno.getidAluno());
         ResultSet resultSet = stm.executeQuery();
 
         System.out.println("\n_____ Cursos concluídos _____");
@@ -211,7 +211,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
                     "WHERE curso_aluno.id_aluno = ?";
 
         PreparedStatement stm = conexao.prepareStatement(sql);
-        stm.setInt(1, aluno.getid());
+        stm.setInt(1, aluno.getidAluno());
         ResultSet resultSet = stm.executeQuery();
 
         System.out.println("\n_____ Boletim _____");
@@ -227,7 +227,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         String sql = "SELECT * FROM aluno WHERE id = ?";
 
         PreparedStatement stm = conexao.prepareStatement(sql);
-        stm.setInt(1, aluno.getid());
+        stm.setInt(1, aluno.getidAluno());
         ResultSet resultSet = stm.executeQuery();
 
         System.out.println("\n_____ Perfil do aluno _____");

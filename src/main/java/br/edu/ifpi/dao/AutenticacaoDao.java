@@ -52,8 +52,8 @@ public class AutenticacaoDao {
 
             if (resultSet.next()) {
                 Professor professor = new Professor(
+                    resultSet.getInt("id"),
                         resultSet.getString("nome"),
-                        resultSet.getInt("id"),
                         resultSet.getString("email"));
 
                 System.out.println("Professor autenticado com sucesso!");
@@ -86,7 +86,7 @@ public class AutenticacaoDao {
                 String professorNome = resultSet.getString("professor_nome");
                 String professorEmail = resultSet.getString("email");
 
-                Professor professor = new Professor(professorNome, professorId, professorEmail);
+                Professor professor = new Professor(professorId, professorEmail, professorEmail);
                 Curso curso = new Curso(cursoId, cursoNome, cursoCargaHoraria, cursoStatus, professor);
 
                 System.out.println("Curso autenticado com sucesso!");

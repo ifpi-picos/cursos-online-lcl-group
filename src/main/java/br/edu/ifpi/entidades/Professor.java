@@ -14,13 +14,10 @@ public class Professor {
         this.email = email;
     }
 
-    public Professor(String nome, int idProfessor, String email) {
+    public Professor(int idProfessor, String nome, String email) {
         this.idProfessor = idProfessor;
         this.nome = nome;
         this.email = email;
-    }
-
-    public Professor(int int1, String string, String string2) {
     }
 
     public String getNome() {
@@ -30,9 +27,12 @@ public class Professor {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    
     public int getIdProfessor() {
         return idProfessor;
+    }
+    public void setIdProfessor(int idProfessor) {
+        this.idProfessor = idProfessor;
     }
 
     public String getEmail() {
@@ -56,4 +56,5 @@ public class Professor {
         CursoDao cursoDao = new CursoDao(Conexao.getConnection());
         cursoDao.cadastrar(curso);
     }
+
 }

@@ -24,7 +24,7 @@ public class CursoDao implements Dao<Curso> {
             statement.setString(1, curso.getNome());
             statement.setString(2, curso.getStatusCurso());
             statement.setInt(3, curso.getCargaHoraria());
-            statement.setInt(4, curso.getProfessor().getId());
+            statement.setInt(4, curso.getProfessor().getIdProfessor());
 
             int rowsAffected = statement.executeUpdate();
             System.out.println(rowsAffected);
@@ -60,7 +60,7 @@ public class CursoDao implements Dao<Curso> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return cursos;
     }
 
     @Override

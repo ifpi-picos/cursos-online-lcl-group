@@ -1,39 +1,28 @@
 package br.edu.ifpi;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+
+import br.edu.ifpi.dao.Conexao;
+import br.edu.ifpi.dao.CursoDao;
+import br.edu.ifpi.entidades.Curso;
+import br.edu.ifpi.entidades.Professor;
+import br.edu.ifpi.enums.StatusCurso;
+
 public class CursoTest {
-  /*private String nome;
-  private Boolean status;
-  private int cargaHoraria;
-  
-  public CursoTest(String nome, Boolean status, int cargaHoraria) {
-    this.nome = nome;
-    this.status = status;
-    this.cargaHoraria = cargaHoraria;
-}*/
+   public static void main(String[] args) throws SQLException {
 
-  // Curso cursoPadrao = null;
+    Connection conexao = Conexao.getConnection();
+    CursoDao cursoDao = new CursoDao(conexao);
+    Professor professor = new Professor(2, "Jesiel Viana", "jesielviana@gmail.com");
+    Curso cursoCadastrar = new Curso("POO", 100, StatusCurso.ABERTO, professor);
 
+    int resultadoCadastro = cursoDao.cadastrar(cursoCadastrar);
 
-  // @Before
-  // public void setup() {
-  // cursoPadrao =
-  // new Curso("Padrão", StatusCurso.ABERTO, 80, new Professor("Professor", 1, "89999"));
-  // }
+    System.out.println("Linhas afetadas (Cadastro): " + resultadoCadastro);
+    
 
-  // @Test
-  // public void cursoAbertoDeveAceitarMatriculaDeAluno() {
-  // Aluno aluno = new Aluno("Aluno", 0, "899999");
-  // assertTrue(cursoPadrao.getAlunos().size() == 0);
-  // cursoPadrao.realizaMatricula(aluno);
-  // assertTrue(cursoPadrao.getAlunos().size() == 1);
-  // }
-
-  // @Test
-  // public void cursoFechadoDeveRecusarMatriculaDeAluno() {
-  // Aluno aluno = new Aluno("Aluno", 0, "899999");
-  // cursoPadrao.setStatus(StatusCurso.FECHADO);
-  // cursoPadrao.realizaMatricula(aluno);
-  // assertTrue(cursoPadrao.getAlunos().size() == 0);
-  // }
-
+  List<Curso> cursosConsultados = cursoDao.consultar();
+   }
 }
