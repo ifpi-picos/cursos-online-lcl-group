@@ -56,6 +56,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
             while (resultSet.next()) {
                 int idCurso = resultSet.getInt("id_curso");
                 int idAluno = resultSet.getInt("id_aluno");
+                Boolean nota = resultSet.getBoolean("nota");
 
                 System.out.println("id curso: " + idCurso + ", id aluno: " + idAluno);
             }
@@ -73,6 +74,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
             PreparedStatement stm = conexao.prepareStatement(sql);
             stm.setInt(1, entidade.getIdCurso());
             stm.setInt(2, entidade.getIdAluno());
+            stm.setBoolean(3, entidade.getNota());
             int rowsAffected = stm.executeUpdate();
             System.out.println(rowsAffected);
             return rowsAffected;
@@ -112,12 +114,12 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         try {
             PreparedStatement stm = conexao.prepareStatement(sql);
             stm.setInt(1, curso.getId());
+            //stm.setBoolean(2, curso.getNota() >= 7);
             ResultSet resultSet = stm.executeQuery();
 
             if (resultSet.next()) {
-                float media = resultSet.getInt("media");
+                Boolean media = resultSet.getBoolean("media");
                 System.out.println("Media de alunos: " + media);
-                
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -207,12 +209,12 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         }
     }
 
-    public void inserirNota(CursoAluno cursoAluno, float nota) {
+    public void inserirNota(CursoAluno cursoAluno, Boolean nota) {
         String sql = "UPDATE curso_aluno SET nota = ? WHERE id_curso = ? AND id_aluno = ?";
 
         try {
             PreparedStatement stm = conexao.prepareStatement(sql);
-            stm.setFloat(1, nota);
+            stm.setBoolean(1, nota);
             stm.setInt(2, cursoAluno.getIdCurso());
             stm.setInt(3, cursoAluno.getIdAluno());
             int rowsAffected = stm.executeUpdate();

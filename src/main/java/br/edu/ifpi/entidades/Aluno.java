@@ -74,17 +74,17 @@ public class Aluno {
         cursoAlunoDao.remover(cursoAluno);
     }
 
-    public void cursosConcluidos() throws SQLException {
+    public void cursosConcluidos(Curso curso) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.cursosConcluidos(this);
     }
     
-    public void mostrarBoletim() throws SQLException {
+    public void mostrarBoletim(Aluno aluno) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.consultarBoletimAluno(this);
     }
 
-    public void exibirPerfilAluno() throws SQLException {
+    public void exibirPerfilAluno(Aluno aluno) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.VisualizarPerfilAluno(this);
         cursoAlunoDao.consultarBoletimAluno(this);

@@ -43,7 +43,15 @@ public class Professor {
         this.email = email;
     }
 
+<<<<<<< HEAD
     public void inserirNota(CursoAluno cursoAluno, float nota) throws Exception {
+=======
+    public int getId() {
+        return 0;
+    }
+
+    public void inserirNota(CursoAluno cursoAluno, Boolean nota) throws Exception {
+>>>>>>> eec89d6bc83daa2a63b51e3b30d886058dd04072
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.inserirNota(cursoAluno, nota);
     }

@@ -102,9 +102,9 @@ public class ProfessorDao implements Dao<Professor> {
         return 0;
     }
 
-    public int cadastrarNotas(CursoAluno cursoAluno, Double nota) {
+    public int cadastrarNotas(CursoAluno cursoAluno, Boolean nota) {
       try (PreparedStatement stm = conexao.prepareStatement("UPDATE curso_aluno SET nota = ? WHERE id_aluno = ? AND id_curso = ?")) {
-          stm.setDouble(1, nota);
+          stm.setBoolean(1, nota);
           stm.setInt(2, cursoAluno.getIdAluno());
           stm.setInt(3, cursoAluno.getIdCurso());
 
