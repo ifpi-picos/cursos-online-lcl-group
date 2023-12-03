@@ -1,5 +1,9 @@
 package br.edu.ifpi.entidades;
 
+import java.sql.SQLException;
+
+import br.edu.ifpi.dao.Conexao;
+import br.edu.ifpi.dao.CursoAlunoDao;
 import br.edu.ifpi.enums.StatusMatricula;
 
 public class CursoAluno {
@@ -55,5 +59,20 @@ public class CursoAluno {
 
     public int getIdAluno() {
         return 0;
+    }
+
+    public void cadastrar(CursoAluno cursoAluno) throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.cadastrar(cursoAluno);
+    }
+
+    public void consultar (CursoAluno cursoaluno) throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.consultar();
+    }
+
+    public void remover(CursoAluno cursoAluno) throws SQLException {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.remover(cursoAluno);
     }
 }

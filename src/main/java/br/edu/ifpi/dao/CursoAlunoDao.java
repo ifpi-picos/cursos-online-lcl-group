@@ -42,7 +42,6 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
 
         }
         return 0;
-
     }
 
     @Override
@@ -171,6 +170,25 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         }
     }
 
+    public void cursosMatriculados (Aluno aluno) throws SQLException {
+        String sql = "SELECT curso.nome as curso_nome, curso.id as id_curso " +
+                    "FROM curso_aluno " +
+                    "JOIN curso on curso.id = curso_aluno.id_curso " +
+                    "WHERE curso_aluno.id_aluno = ? AND StatusMatricula = 'MATRICULADO' ";
+
+        PreparedStatement stm = conexao.prepareStatement(sql);
+        stm.setInt(1, aluno.getidAluno());
+        ResultSet resultSet = stm.executeQuery();
+
+        System.out.println("\n_____Cursos matriculados_____");
+        while (resultSet.next()) {
+            String nomeCurso = resultSet.getString("curso_nome");
+            int idCurso = resultSet.getInt("id_curso");
+
+            System.out.println(idCurso + " | " + nomeCurso);
+        }
+    }
+
     public void cursosConcluidos (Aluno aluno) throws SQLException {
         String sql = "SELECT curso.nome as curso_nome " +
                     "FROM curso_aluno " +
@@ -187,7 +205,6 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
 
             System.out.println(nomeCurso);
         }
-
     }
 
     public void inserirNota(CursoAluno cursoAluno, float nota) {
@@ -243,4 +260,3 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         }
     }
 }
-
