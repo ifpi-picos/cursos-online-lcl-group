@@ -10,7 +10,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import br.edu.ifpi.entidades.Aluno;
-import br.edu.ifpi.enums.StatusAluno;
+//import br.edu.ifpi.enums.StatusAluno;
 
 public class AlunoDao implements Dao<Aluno> {
     private Connection conexao;
