@@ -85,7 +85,7 @@ public class CursoDao implements Dao<Curso> {
             stm.setString(1, curso.getNome());
             stm.setString(2, curso.getStatusCurso().toString());
             stm.setInt(3, curso.getCargaHoraria());
-            stm.setInt(4, curso.getProfessor().getId());
+            stm.setInt(4, curso.getProfessor().getIdProfessor());
             stm.setInt(5, curso.getId());
 
             int rowsAffected = stm.executeUpdate();

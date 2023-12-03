@@ -12,21 +12,17 @@ import br.edu.ifpi.dao.CursoDao;
 import br.edu.ifpi.dao.ProfessorDao;
 
 import br.edu.ifpi.entidades.Aluno;
-import br.edu.ifpi.entidades.Curso;
-import br.edu.ifpi.entidades.CursoAluno;
-import br.edu.ifpi.entidades.Professor;
-import br.edu.ifpi.enums.StatusAluno;
-import br.edu.ifpi.enums.StatusCurso;
+
 
 public class App {
     public static void main(String[] args) throws SQLException {
 
-        Connection conexao = Conexao.getConnection();
-        AlunoDao alunoDao = new AlunoDao(conexao);
-        CursoDao cursoDao = new CursoDao(conexao);
-        ProfessorDao professorDao = new ProfessorDao(conexao);
-        AutenticacaoDao autenticacaoDao = new AutenticacaoDao(conexao);
-        CursoAlunoDao CursoAlunoDao = new CursoAlunoDao(conexao);
+        //Connection conexao = Conexao.getConnection();
+        //AlunoDao alunoDao = new AlunoDao(conexao);
+        //CursoDao cursoDao = new CursoDao(conexao);
+        //ProfessorDao professorDao = new ProfessorDao(conexao);
+        //AutenticacaoDao autenticacaoDao = new AutenticacaoDao(conexao);
+        //CursoAlunoDao CursoAlunoDao = new CursoAlunoDao(conexao);
 
         //Aluno novoAluno = new Aluno("Livya", "livya@gmail.com", StatusAluno.ATIVO);
         //int resultadoCadastro = alunoDao.cadastrar(novoAluno);
@@ -38,7 +34,7 @@ public class App {
 
         //Professor joaoPaulo = autenticacaoDao.autenticarProfessor("joaopaulo@gmail.com");
 
-        List<Aluno> alunosConsultados = alunoDao.consultar();
+        //List<Aluno> alunosConsultados = alunoDao.consultar();
 
 
         //int resultadoRemocao = alunoDao.remover();

@@ -41,6 +41,7 @@ public class ProfessorDao implements Dao<Professor> {
 
     @Override
     public List<Professor> consultar() {
+        List<Curso> cursos = new ArrayList<>();
         try (PreparedStatement stm = conexao.prepareStatement("SELECT * FROM professor order by id asc")) {
             ResultSet resultSet = stm.executeQuery();
 
@@ -66,7 +67,7 @@ public class ProfessorDao implements Dao<Professor> {
     @Override
     public int remover(Professor professor) {
         try (PreparedStatement stm = conexao.prepareStatement("DELETE FROM professor WHERE id = ?")) {
-            stm.setInt(1, professor.getId());
+            stm.setInt(1, professor.getIdProfessor());
 
             int rowsAffected = stm.executeUpdate();
             System.out.println(rowsAffected);
@@ -86,7 +87,7 @@ public class ProfessorDao implements Dao<Professor> {
         try (PreparedStatement stm = conexao.prepareStatement("UPDATE professor SET nome = ?, email = ? WHERE id = ?")) {
             stm.setString(1, professor.getNome());
             stm.setString(2, professor.getEmail());
-            stm.setInt(3, professor.getId());
+            stm.setInt(3, professor.getIdProfessor());
 
             int rowsAffected = stm.executeUpdate();
             System.out.println(rowsAffected);
@@ -126,7 +127,7 @@ public class ProfessorDao implements Dao<Professor> {
     try { PreparedStatement stm = conexao.prepareStatement("SELECT curso.nome as nome, curso.carga_horaria as carga_horaria, curso.status as status, curso.id as id " +
     "FROM curso " +
     "WHERE curso.id_professor = ?");
-      stm.setInt(1, professor.getId());
+      stm.setInt(1, professor.getIdProfessor());
 
       java.sql.ResultSet resultSet = stm.executeQuery();
 

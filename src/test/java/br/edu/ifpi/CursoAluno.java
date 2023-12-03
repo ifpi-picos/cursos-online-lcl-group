@@ -27,8 +27,8 @@ public class CursoAluno {
 
         
         CursoAluno cursoAlunoCadastrar = new CursoAluno(curso, aluno);
-        int resultadoCadastro = cursoAlunoDao.cadastrar(cursoAlunoCadastrar);
-        System.out.println("Linhas afetadas (Cadastro): " + resultadoCadastro);
+        //int resultadoCadastro = cursoAlunoDao.cadastrar(cursoAlunoCadastrar);
+        //System.out.println("Linhas afetadas (Cadastro): " + resultadoCadastro);
 
     }
 }
