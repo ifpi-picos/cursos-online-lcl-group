@@ -32,9 +32,9 @@ public class App {
         //int resultadoCadastro = alunoDao.cadastrar(novoAluno);
         //Aluno Livya = autenticacaoDao.autenticarAluno("livya@gmail.com");
 
-        Aluno novoAluno = new Aluno("Paulo", "paulo@gmail.com", StatusAluno.ATIVO);
-        int resultadoCadastro = alunoDao.cadastrar(novoAluno);
-        Aluno Paulo = autenticacaoDao.autenticarAluno("paulo@gmail.com");
+        //Aluno novoAluno = new Aluno("Paulo", "paulo@gmail.com", StatusAluno.ATIVO);
+        //int resultadoCadastro = alunoDao.cadastrar(novoAluno);
+        //Aluno Paulo = autenticacaoDao.autenticarAluno("paulo@gmail.com");
 
         //Professor joaoPaulo = autenticacaoDao.autenticarProfessor("joaopaulo@gmail.com");
 

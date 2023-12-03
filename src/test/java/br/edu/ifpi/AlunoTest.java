@@ -23,7 +23,7 @@ public class AlunoTest {
         //List<Aluno> alunosConsultados = alunoDao.consultar();
 
 
-//* */ METODO DE REMOVER DEU CERTO 😭😭😭😭😭
+//! METODO DE REMOVER DEU CERTO 😭😭😭😭😭
         //Aluno aluno_remover = new Aluno(0, null, null, null);
         //System.out.println("Digite o id do aluno que deseja remover: ");
         //int id_remove = scanner.nextInt();
