@@ -74,13 +74,13 @@ public class Curso {
 
     public void matricularAluno(Aluno aluno) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
-        CursoAluno cursoAluno = new CursoAluno(this, aluno);
+        CursoAluno cursoAluno = new CursoAluno(this, aluno, false);
         cursoAlunoDao.cadastrar(cursoAluno);
     }
 
     public void desmatricularAluno(Aluno aluno) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
-        CursoAluno cursoAluno = new CursoAluno(this, aluno);
+        CursoAluno cursoAluno = new CursoAluno(this, aluno, false);
         cursoAlunoDao.remover(cursoAluno);
     }
 

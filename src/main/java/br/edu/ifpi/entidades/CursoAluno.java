@@ -8,11 +8,12 @@ public class CursoAluno {
     private StatusMatricula status;
     private boolean nota;
     
-    public CursoAluno(Curso curso, Aluno aluno) {
+    public CursoAluno(Curso curso, Aluno aluno, boolean nota) {
         this.curso = curso;
         this.aluno = aluno;
+        this.nota = nota;
     }
-
+ 
     public Curso getCurso() {
         return curso;
     }
@@ -37,8 +38,12 @@ public class CursoAluno {
         this.status = status;
     }
 
-    public boolean isNota() {
+    public boolean getNota() {
         return nota;
+    }
+    
+    public void setNota(boolean nota) {
+        this.nota = nota;
     }
 
     public void consultarBoletimAluno(Aluno aluno2) {

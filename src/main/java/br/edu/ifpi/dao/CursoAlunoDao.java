@@ -20,13 +20,14 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
 
     @Override
     public int cadastrar(CursoAluno cursoAluno) {
-        String sql = "INSERT INTO CURSO_ALUNO (id_curso, id) VALUES (?,?)";
+        String sql = "INSERT INTO CURSO_ALUNO (idCurso, idAluno, nota) VALUES (?,?,?)";
 
         try {
             PreparedStatement stm = conexao.prepareStatement(sql);
 
             stm.setInt(1, cursoAluno.getIdCurso());
             stm.setInt(2, cursoAluno.getIdAluno());
+            stm.setBoolean(3, cursoAluno.getNota());
 
             int row = stm.executeUpdate();
             System.err.println(row);

@@ -64,13 +64,13 @@ public class Aluno {
 
     public void realizarMatricula(Curso curso) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
-        CursoAluno cursoAluno = new CursoAluno(curso, this);
+        CursoAluno cursoAluno = new CursoAluno(curso, this, false);
         cursoAlunoDao.cadastrar(cursoAluno);
     }
 
     public void cancelarMatricula(Curso curso) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
-        CursoAluno cursoAluno = new CursoAluno(curso, this);
+        CursoAluno cursoAluno = new CursoAluno(curso, this, false);
         cursoAlunoDao.remover(cursoAluno);
     }
 
