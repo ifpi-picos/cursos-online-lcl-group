@@ -19,8 +19,8 @@ public class CursoTest {
     Scanner scanner = new Scanner(System.in);
 
 //* metodo cadastrar e consultar funcionando
-    Professor professor = new Professor(2, null, null);
-    Curso cursoCadastrar = new Curso("Aruitetura de computadores", 60, StatusCurso.ABERTO, professor);
+    Professor professor = new Professor(4, null, null);
+    Curso cursoCadastrar = new Curso("Algoritimo", 60, StatusCurso.CONCLUIDO, professor);
   
     int resultadoCadastro = cursoDao.cadastrar(cursoCadastrar);
 

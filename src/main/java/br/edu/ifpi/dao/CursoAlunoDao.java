@@ -52,7 +52,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         try {
             PreparedStatement stm = conexao.prepareStatement(sql);
             ResultSet resultSet = stm.executeQuery();
-
+System.out.println("___________Lista de alunos maticulados__________");
             while (resultSet.next()) {
                 int idCurso = resultSet.getInt("id_curso");
                 int idAluno = resultSet.getInt("id_aluno");
@@ -74,7 +74,6 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
             PreparedStatement stm = conexao.prepareStatement(sql);
             stm.setInt(1, entidade.getIdCurso());
             stm.setInt(2, entidade.getIdAluno());
-            stm.setFloat(3, entidade.getNota());
             int rowsAffected = stm.executeUpdate();
             System.out.println(rowsAffected);
             return rowsAffected;

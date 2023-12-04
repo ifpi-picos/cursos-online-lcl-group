@@ -72,7 +72,7 @@ public class ProfessorTest {
 
 //int rowsAffected = professorDao.cadastrarNotas(cursoAluno, (float) 9.5);
 
-//* metodo exibirCursosMinistrados 
+//* metodo exibirCursosMinistrados funcionando
 
 //int idProfessorExistente = 2;  //ID real do professor que deseja saber os cursos ministrados
 //! se quiser crie um scanner para pedir o id no terminal
