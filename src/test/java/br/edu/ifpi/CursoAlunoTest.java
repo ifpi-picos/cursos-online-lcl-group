@@ -18,21 +18,14 @@ public class CursoAlunoTest {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(conexao);
 
         //* método cadastrar
-        CursoAluno cursoAluno = new CursoAluno(null, null, (float) 0); // pega o curso_aluno que vc ja cadastrou na tabela e cadastra/autera a nota
-        cursoAluno.setIdCurso(7); //pega o id do curso
-        cursoAluno.setIdAluno(7); // pega o id do aluno
 
-        //CursoAluno cursoAlunoCadastrar = new CursoAluno(curso, aluno, 0.0f);
-        int resultadoCadastro = cursoAlunoDao.cadastrar(cursoAluno);
-        System.out.println("Cadastro realizado com sucesso!! " + resultadoCadastro);
+        //CursoAluno cursoAluno = new CursoAluno(null, null, (float) 0); // pega o curso_aluno que vc ja cadastrou na tabela e cadastra/autera a nota
+        //cursoAluno.setIdCurso(7); //pega o id do curso
+        //cursoAluno.setIdAluno(7); // pega o id do aluno
+
+        //int resultadoCadastro = cursoAlunoDao.cadastrar(cursoAluno);
+        //System.out.println("Cadastro realizado com sucesso!! " + resultadoCadastro);
 
     }
 
-
-    public void setIdAluno(int i) {
-    }
-
-
-    public void setIdCurso(int i) {
-    }
 }
