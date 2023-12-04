@@ -58,7 +58,7 @@ System.out.println("___________Lista de alunos maticulados__________");
                 int idAluno = resultSet.getInt("id_aluno");
                 Float nota = resultSet.getFloat("nota");
 
-                System.out.println("id curso: " + idCurso + ", id aluno: " + idAluno);
+                System.out.println("id curso: " + idCurso + " | id aluno: " + idAluno + " | Nota: " + nota);
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -19,26 +19,26 @@ public class CursoTest {
     Scanner scanner = new Scanner(System.in);
 
 //* metodo cadastrar e consultar funcionando
-    Professor professor = new Professor(4, null, null);
-    Curso cursoCadastrar = new Curso("Algoritimo", 60, StatusCurso.CONCLUIDO, professor);
+//     Professor professor = new Professor(4, null, null);
+//     Curso cursoCadastrar = new Curso("Algoritimo", 60, StatusCurso.CONCLUIDO, professor);
   
-    int resultadoCadastro = cursoDao.cadastrar(cursoCadastrar);
+//     int resultadoCadastro = cursoDao.cadastrar(cursoCadastrar);
 
-    System.out.println("Curso cadastrado: " + resultadoCadastro);
+//     System.out.println("Curso cadastrado: " + resultadoCadastro);
    
-  List<Curso> cursosConsultados = cursoDao.consultar();
+//   List<Curso> cursosConsultados = cursoDao.consultar();
 
   //* metodo remover funcionando
 
-      //Curso cursoRemover = new Curso(0, null, 0, null, null);  
-      //System.out.println("Digite o ID do curso que deseja remover: ");
-      //int idCursoRemover = scanner.nextInt();
+      Curso cursoRemover = new Curso(0, null, 0, null, null);  
+      System.out.println("Digite o ID do curso que deseja remover: ");
+      int idCursoRemover = scanner.nextInt();
 
-      //cursoRemover.setId(idCursoRemover);
+      cursoRemover.setId(idCursoRemover);
 
-      //int resultadoRemocao = cursoDao.remover(cursoRemover);
+      int resultadoRemocao = cursoDao.remover(cursoRemover);
 
-      //System.out.println("Remoção realizada com sucesso! " + resultadoRemocao);
+      System.out.println("Remoção realizada com sucesso! " + resultadoRemocao);
 
 
 

@@ -22,24 +22,25 @@ public class CursoAlunoTest {
         //Aluno aluno = new Aluno(0, null, null, null);
         //* método cadastrar
 
-        //CursoAluno cursoAluno = new CursoAluno(null, null, (float) 0); // pega o curso_aluno que vc ja cadastrou na tabela e cadastra/autera a nota
-        //cursoAluno.setIdCurso(7); //pega o id do curso
-        //cursoAluno.setIdAluno(7); // pega o id do aluno
+        // CursoAluno cursoAluno = new CursoAluno(null, null, (float) 0); // pega o curso_aluno que vc ja cadastrou na tabela e cadastra/autera a nota
+        // cursoAluno.setIdCurso(7); //pega o id do curso
+        // cursoAluno.setIdAluno(7); // pega o id do aluno
 
-        //int resultadoCadastro = cursoAlunoDao.cadastrar(cursoAluno);
-        //System.out.println("Cadastro realizado com sucesso!! " + resultadoCadastro);
+        // int resultadoCadastro = cursoAlunoDao.cadastrar(cursoAluno);
+        // System.out.println("Cadastro realizado com sucesso!! " + resultadoCadastro);
+
         //* metodo consultar funcionando */
 
-       // List<CursoAluno> turma = cursoAlunoDao.consultar();
+       //List<CursoAluno> turma = cursoAlunoDao.consultar();
 
         //* metodo remover funcionanddo
-        //CursoAluno cursoRemover = new CursoAluno(null, null, (float) 0);
-        //cursoRemover.setIdCurso(7); //pega o id do curso
-        //cursoRemover.setIdAluno(7); // pega o id do aluno
+    //     CursoAluno cursoRemover = new CursoAluno(null, null, (float) 0);
+    //     cursoRemover.setIdCurso(7); //pega o id do curso
+    //     cursoRemover.setIdAluno(7); // pega o id do aluno
 
-        //int idCursoRemover = cursoAlunoDao.remover(cursoRemover);
-        //System.out.println("Remoção realizada com sucesso! " + idCursoRemover);
+    //     int idCursoRemover = cursoAlunoDao.remover(cursoRemover);
+    //     System.out.println("Remoção realizada com sucesso! " + idCursoRemover);
 
-    }
+     }
 
 }
