@@ -20,14 +20,14 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
 
     @Override
     public int cadastrar(CursoAluno cursoAluno) {
-        String sql = "INSERT INTO CURSO_ALUNO (idCurso, idAluno, nota) VALUES (?,?,?)";
+        String sql = "INSERT INTO CURSO_ALUNO (id_Curso, id_Aluno, nota) VALUES (?,?,?)";
 
         try {
             PreparedStatement stm = conexao.prepareStatement(sql);
 
             stm.setInt(1, cursoAluno.getIdCurso());
             stm.setInt(2, cursoAluno.getIdAluno());
-            stm.setBoolean(3, cursoAluno.getNota());
+            stm.setFloat(3, cursoAluno.getNota());
 
             int row = stm.executeUpdate();
             System.err.println(row);
@@ -56,7 +56,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
             while (resultSet.next()) {
                 int idCurso = resultSet.getInt("id_curso");
                 int idAluno = resultSet.getInt("id_aluno");
-                Boolean nota = resultSet.getBoolean("nota");
+                Float nota = resultSet.getFloat("nota");
 
                 System.out.println("id curso: " + idCurso + ", id aluno: " + idAluno);
             }
@@ -74,7 +74,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
             PreparedStatement stm = conexao.prepareStatement(sql);
             stm.setInt(1, entidade.getIdCurso());
             stm.setInt(2, entidade.getIdAluno());
-            stm.setBoolean(3, entidade.getNota());
+            stm.setFloat(3, entidade.getNota());
             int rowsAffected = stm.executeUpdate();
             System.out.println(rowsAffected);
             return rowsAffected;
@@ -260,5 +260,8 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
             System.out.println("Email: " + email);
             System.out.println("Status: " + status);
         }
+    }
+
+    public void cadastrarNotas(CursoAluno cursoAluno, Double nota) {
     }
 }

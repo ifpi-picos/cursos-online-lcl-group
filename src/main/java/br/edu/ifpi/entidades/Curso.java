@@ -20,10 +20,10 @@ public class Curso {
         this.professor = professor;
     }
 
-    public Curso(int idCurso, String nome, int cargaHoraria, StatusCurso status, Professor professor) {
+    public Curso(int idCurso, String nome, int i, StatusCurso status, Professor professor) {
         this.idCurso = idCurso;
         this.nome = nome;
-        this.cargaHoraria = cargaHoraria;
+        this.cargaHoraria = i;
         this.status = status;
         this.professor = professor;
     }
@@ -74,13 +74,13 @@ public class Curso {
 
     public void matricularAluno(Aluno aluno) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
-        CursoAluno cursoAluno = new CursoAluno(this, aluno, false);
+        CursoAluno cursoAluno = new CursoAluno(this, aluno, null);
         cursoAlunoDao.cadastrar(cursoAluno);
     }
 
     public void desmatricularAluno(Aluno aluno) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
-        CursoAluno cursoAluno = new CursoAluno(this, aluno, false);
+        CursoAluno cursoAluno = new CursoAluno(this, aluno, null);
         cursoAlunoDao.remover(cursoAluno);
     }
 

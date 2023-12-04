@@ -20,10 +20,10 @@ public class CursoDao implements Dao<Curso> {
     @Override
     public int cadastrar(Curso curso) {
         try (PreparedStatement statement = conexao.prepareStatement(
-                "INSERT INTO CURSO (NOME, STATUS, CARGA_HORARIA, ID_PROFESSOR) VALUES (?, ?, ?, ?)")) {
+                "INSERT INTO CURSO (NOME, CARGA_HORARIA, STATUS, ID_PROFESSOR) VALUES (?, ?, ?, ?)")) {
             statement.setString(1, curso.getNome());
-            statement.setString(2, curso.getStatusCurso());
-            statement.setInt(3, curso.getCargaHoraria());
+            statement.setInt(2, curso.getCargaHoraria());
+            statement.setString(3, curso.getStatusCurso());
             statement.setInt(4, curso.getProfessor().getIdProfessor());
 
             int rowsAffected = statement.executeUpdate();

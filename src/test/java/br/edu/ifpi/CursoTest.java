@@ -19,18 +19,18 @@ public class CursoTest {
     Scanner scanner = new Scanner(System.in);
 
 //* metodo cadastrar e consultar funcionando
-    //Professor professor = new Professor(2, "Jesiel Viana", "jesielviana@gmail.com");
-    //Curso cursoCadastrar = new Curso("POO", 100, StatusCurso.ABERTO, professor);
+    Professor professor = new Professor(2, null, null);
+    Curso cursoCadastrar = new Curso("Aruitetura de computadores", 60, StatusCurso.ABERTO, professor);
   
-    //int resultadoCadastro = cursoDao.cadastrar(cursoCadastrar);
+    int resultadoCadastro = cursoDao.cadastrar(cursoCadastrar);
 
-   // System.out.println("Curso cadastrado: " + resultadoCadastro);
+    System.out.println("Curso cadastrado: " + resultadoCadastro);
    
-  //List<Curso> cursosConsultados = cursoDao.consultar();
+  List<Curso> cursosConsultados = cursoDao.consultar();
 
   //* metodo remover funcionando
 
-      //Curso cursoRemover = new Curso(0, null, 0, null, null);  // Supondo que você tenha um construtor vazio
+      //Curso cursoRemover = new Curso(0, null, 0, null, null);  
       //System.out.println("Digite o ID do curso que deseja remover: ");
       //int idCursoRemover = scanner.nextInt();
 

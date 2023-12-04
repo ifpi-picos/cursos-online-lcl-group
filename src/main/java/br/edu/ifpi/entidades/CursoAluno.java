@@ -9,15 +9,16 @@ import br.edu.ifpi.enums.StatusMatricula;
 public class CursoAluno {
     private Curso curso;
     private Aluno aluno;
+    private int idCurso;
+    private int idAluno;
     private StatusMatricula status;
-    private boolean nota;
-    
-    public CursoAluno(Curso curso, Aluno aluno, boolean nota) {
+    private Float nota;
+
+    public CursoAluno(Curso curso, Aluno aluno, Float nota) {
         this.curso = curso;
         this.aluno = aluno;
         this.nota = nota;
     }
- 
     public Curso getCurso() {
         return curso;
     }
@@ -42,23 +43,29 @@ public class CursoAluno {
         this.status = status;
     }
 
-    public boolean getNota() {
+    public Float getNota() {
         return nota;
     }
     
-    public void setNota(boolean nota) {
+    public void setNota(Float nota) {
         this.nota = nota;
     }
 
     public void consultarBoletimAluno(Aluno aluno2) {
     }
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
+    }
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
+    }
 
     public int getIdCurso() {
-        return 0;
+        return idCurso;
     }
 
     public int getIdAluno() {
-        return 0;
+        return idAluno;
     }
 
     public void cadastrar(CursoAluno cursoAluno) throws SQLException {
@@ -75,4 +82,10 @@ public class CursoAluno {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.remover(cursoAluno);
     }
+
+    public void cadastrarNotas(CursoAluno cursoAluno, Double nota) throws Exception {
+        CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
+        cursoAlunoDao.cadastrarNotas(cursoAluno, nota);
+    }
+
 }

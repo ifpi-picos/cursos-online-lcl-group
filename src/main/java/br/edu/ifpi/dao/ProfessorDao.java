@@ -11,6 +11,7 @@ import br.edu.ifpi.entidades.Curso;
 import br.edu.ifpi.entidades.CursoAluno;
 import br.edu.ifpi.entidades.Professor;
 
+
 public class ProfessorDao implements Dao<Professor> {
     private Connection conexao;
 
@@ -102,9 +103,9 @@ public class ProfessorDao implements Dao<Professor> {
         return 0;
     }
 
-    public int cadastrarNotas(CursoAluno cursoAluno, Boolean nota) {
+    public int cadastrarNotas(CursoAluno cursoAluno, Float nota) {
       try (PreparedStatement stm = conexao.prepareStatement("UPDATE curso_aluno SET nota = ? WHERE id_aluno = ? AND id_curso = ?")) {
-          stm.setBoolean(1, nota);
+          stm.setFloat(1, nota);
           stm.setInt(2, cursoAluno.getIdAluno());
           stm.setInt(3, cursoAluno.getIdCurso());
 
@@ -131,7 +132,7 @@ public class ProfessorDao implements Dao<Professor> {
 
       java.sql.ResultSet resultSet = stm.executeQuery();
 
-      System.out.println("\nLista de cursos:");
+      System.out.println("\n__________Lista de cursos:__________");
       while (resultSet.next()) {
         String nome = resultSet.getString("nome");
         int cargaHoraria = resultSet.getInt("carga_horaria");
