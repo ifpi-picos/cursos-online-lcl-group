@@ -32,9 +32,8 @@ public class AlunoTest {
 
         //alunoDao.remover(aluno_remover);
 
-       
-        //List<Aluno> alunosConsultados = alunoDao.consultar();
-
+        alunoDao.consultar();
+        
         System.out.println("Digite o id do aluno que deseja alterar:");
         int alterarId = scanner.nextInt();
         scanner.nextLine();
@@ -50,7 +49,7 @@ public class AlunoTest {
 
         alunoDao.alterar(alterAluno);
 
-        List<Aluno> alunosConsultados = alunoDao.consultar();
+
 
     }
 }

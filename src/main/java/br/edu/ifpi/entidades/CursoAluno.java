@@ -19,6 +19,15 @@ public class CursoAluno {
         this.aluno = aluno;
         this.nota = nota;
     }
+    public CursoAluno(int idCurso, int idAluno, float nota){
+        this.idCurso = idCurso;
+        this.idAluno = idAluno;
+        this.nota = nota;
+    }
+    public CursoAluno(){
+     //criação de constructor vazio para não passar alguns parametros
+    }
+
     public Curso getCurso() {
         return curso;
     }
