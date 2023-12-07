@@ -113,12 +113,11 @@ System.out.println("___________Lista de alunos maticulados__________");
         try {
             PreparedStatement stm = conexao.prepareStatement(sql);
             stm.setInt(1, curso.getId());
-            //stm.setBoolean(2, curso.getNota() >= 7);
             ResultSet resultSet = stm.executeQuery();
 
             if (resultSet.next()) {
-                Boolean media = resultSet.getBoolean("media");
-                System.out.println("Media de alunos: " + media);
+                Float media = resultSet.getFloat("media");
+                System.out.println("Nota média geral dos alunos em " + curso.getNome() + ": " + media);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -139,9 +138,10 @@ System.out.println("___________Lista de alunos maticulados__________");
             if (resultSet.next()) {
                 int total = resultSet.getInt("total");
                 int aprovados = resultSet.getInt("aprovados");
-                float porcentagem = (aprovados/total) * 100;
+                float porcentagem = ((float)aprovados/total) * 100;
 
-                System.out.println("Total de alunos aprovados: " + porcentagem + "%");
+                System.out.println("Porcentagem de alunos aprovados em " + curso.getNome() + ": "
+                    + porcentagem + "%");
             }
         } catch (SQLException e) {
 
@@ -162,9 +162,10 @@ System.out.println("___________Lista de alunos maticulados__________");
             if (resultSet.next()) {
                 int total = resultSet.getInt("total");
                 int reprovados = resultSet.getInt("reprovados");
-                float porcentagem = (reprovados/total) * 100;
+                float porcentagem = ((float)reprovados/total) * 100;
 
-                System.out.println("Total de alunos reprovados: " + porcentagem + "%");
+                System.out.println("Porcentagem de alunos reprovados em " + curso.getNome() + ": "
+                    + porcentagem + "%");
             }
         } catch (SQLException e) {
 
@@ -208,12 +209,12 @@ System.out.println("___________Lista de alunos maticulados__________");
         }
     }
 
-    public void inserirNota(CursoAluno cursoAluno, Boolean nota) {
+    public void inserirNota(CursoAluno cursoAluno, Float nota) {
         String sql = "UPDATE curso_aluno SET nota = ? WHERE id_curso = ? AND id_aluno = ?";
 
         try {
             PreparedStatement stm = conexao.prepareStatement(sql);
-            stm.setBoolean(1, nota);
+            stm.setFloat(1, nota);
             stm.setInt(2, cursoAluno.getIdCurso());
             stm.setInt(3, cursoAluno.getIdAluno());
             int rowsAffected = stm.executeUpdate();

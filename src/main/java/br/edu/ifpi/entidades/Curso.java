@@ -84,7 +84,7 @@ public class Curso {
         cursoAlunoDao.remover(cursoAluno);
     }
 
-    public void alunosMatriculados(Aluno aluno) throws SQLException {
+    public void alunosMatriculados(Curso curso) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.totaldeAlunosMatriculadosCurso(this);
     }
