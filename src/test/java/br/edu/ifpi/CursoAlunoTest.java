@@ -55,11 +55,6 @@ public class CursoAlunoTest {
 
         //* metodo porcentagem de alunos reprovados
         cursoAlunoDao.porcentagemAlunosReprovados(cursoTest);
-
-        //* Metodo cursos concluidos
-        cursoAlunoDao.cursosConcluidos(aluno);
-
-        //*
         
         //* metodo inserir nota
         CursoAluno alunoNota = new CursoAluno(curso, aluno, null);
@@ -67,8 +62,6 @@ public class CursoAlunoTest {
         alunoNota.setIdAluno(1); 
 
         Float nota = 7.0f;
-
-  
         cursoAlunoDao.inserirNota(alunoNota, nota);
      }
 
