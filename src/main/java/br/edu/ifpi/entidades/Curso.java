@@ -20,10 +20,10 @@ public class Curso {
         this.professor = professor;
     }
 
-    public Curso(int idCurso, String nome, int i, StatusCurso status, Professor professor) {
+    public Curso(int idCurso, String nome, int cargaHoraria, StatusCurso status, Professor professor) {
         this.idCurso = idCurso;
         this.nome = nome;
-        this.cargaHoraria = i;
+        this.cargaHoraria = cargaHoraria;
         this.status = status;
         this.professor = professor;
     }

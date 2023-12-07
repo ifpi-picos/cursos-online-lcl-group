@@ -27,8 +27,8 @@ public class ProfessorTest {
         Scanner scanner = new Scanner(System.in);
 
  // * metodo cadastrar funcionando 
-       // Professor novoProfessor = new Professor("messial", "messias@gmail.com");
-        // int resultadoCadastro = professorDao.cadastrar(novoProfessor);
+        Professor novoProfessor = new Professor("Jesiel", "jesiel@gmail.com");
+         int resultadoCadastro = professorDao.cadastrar(novoProfessor);
 
  // * metodo consultar funcionando
         //List<Professor> professoresCadastrados = professorDao.consultar();
@@ -64,14 +64,15 @@ public class ProfessorTest {
     //List<Professor> professoresCadastrados = professorDao.consultar();
 
 //* metodo cadastrarNotas funcionando
-CursoAluno cursoAluno = new CursoAluno(null, null, (float) 0); // pega o curso_aluno que vc ja cadastrou na tabela e cadastra/autera a nota
-cursoAluno.setIdCurso(3); //pega o id do curso
-cursoAluno.setIdAluno(1); // pega o id do aluno
+// CursoAluno cursoAluno = new CursoAluno(null, null, (float) 0); // pega o curso_aluno que vc ja cadastrou na tabela e cadastra/autera a nota
+// cursoAluno.setIdCurso(3); //pega o id do curso
+// cursoAluno.setIdAluno(1); // pega o id do aluno
 
 // Substitua pelo valor da nota desejada
 
-int rowsAffected = professorDao.cadastrarNotas(cursoAluno, (float) 10);
-System.out.println("Cadastro realizado com sucesso!! " + rowsAffected);
+// int rowsAffected = professorDao.cadastrarNotas(cursoAluno, (float) 10);
+// System.out.println("Cadastro realizado com sucesso!! " + rowsAffected);
+
 //* metodo exibirCursosMinistrados funcionando
 
 //int idProfessorExistente = 2;  //ID real do professor que deseja saber os cursos ministrados
