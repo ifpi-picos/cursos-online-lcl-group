@@ -191,21 +191,17 @@ System.out.println("___________Lista de alunos maticulados__________");
         }
     }
 
-    public void cursosConcluidos (Aluno aluno) throws SQLException {
-        String sql = "SELECT curso.nome as curso_nome " +
-                    "FROM curso_aluno " +
-                    "JOIN curso on curso.id = curso_aluno.id_curso " +
-                    "WHERE curso_aluno.id_aluno = ? AND curso_aluno.nota >= 7";
+    public void cursosConcluidos (int aluno) throws SQLException {
+        String sql =  "SELECT id_curso as alunos FROM curso_aluno WHERE id_aluno = ? AND nota >= 7";
 
         PreparedStatement stm = conexao.prepareStatement(sql);
-        stm.setInt(1, aluno.getidAluno());
+        stm.setInt(1, aluno);
         ResultSet resultSet = stm.executeQuery();
 
         System.out.println("\n_____ Cursos concluídos _____");
         while (resultSet.next()) {
-            String nomeCurso = resultSet.getString("curso_nome");
-
-            System.out.println(nomeCurso);
+            int idAluno = resultSet.getInt("alunos");
+            System.out.println("Aluno ID: " + idAluno);
         }
     }
 

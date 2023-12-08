@@ -81,7 +81,7 @@ public class Aluno {
 
     public void cursosConcluidos(Curso curso) throws SQLException {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
-        cursoAlunoDao.cursosConcluidos(this);
+        // cursoAlunoDao.cursosConcluidos(this);
     }
     
     public void mostrarBoletim(Aluno aluno) throws SQLException {

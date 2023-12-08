@@ -44,7 +44,7 @@ public class CursoAlunoTest {
         // System.out.println("Remoção realizada com sucesso! " + idCursoRemover);
 
         // * metodo totaldeAlunosMatriculadosCurso
-         Curso cursoTest = autenticacaoDao.autenticarCurso("ADS");
+        Curso cursoTest = autenticacaoDao.autenticarCurso("ADS");
         //cursoAlunoDao.totaldeAlunosMatriculadosCurso(cursoTest);
 
         //* metodo media Alunos
@@ -56,13 +56,23 @@ public class CursoAlunoTest {
         //* metodo porcentagem de alunos reprovados
         cursoAlunoDao.porcentagemAlunosReprovados(cursoTest);
         
-        //* metodo inserir nota
-        CursoAluno alunoNota = new CursoAluno(curso, aluno, null);
-        alunoNota.setIdCurso(3); 
-        alunoNota.setIdAluno(1); 
+        // //* metodo alterar nota funcionando
+        // CursoAluno cursoAlterarNota = new CursoAluno(null, null, (float) 0);
+        // cursoAlterarNota.setIdCurso(3);
+        // cursoAlterarNota.setIdAluno(7);
+        // Double nota = 4.5;
 
-        Float nota = 7.0f;
-        cursoAlunoDao.inserirNota(alunoNota, nota);
+        // cursoAlunoDao.inserirNota(cursoAlterarNota, nota);
+        // System.out.println("Nota cadastrada com sucesso!");
+
+        //* metodo de cursos concluídos
+        CursoAluno cursoCursosConcluidos = new CursoAluno();
+        
+        cursoAlunoDao.cursosConcluidos(1);
+
+        System.out.println("Curso concluído com sucesso!");
+        
+
      }
 
 }

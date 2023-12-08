@@ -22,8 +22,6 @@ CREATE TABLE aluno (
 CREATE TABLE curso_aluno (
     id_curso INT REFERENCES curso(id),
     id_aluno INT REFERENCES aluno(id),
-    notas1 INT NOT NULL,
-    notas2 INT NOT NULL,
-    notas3 INT NOT NULL,
+    nota INT NOT NULL,
     PRIMARY KEY (id_curso, id_aluno)
 );
