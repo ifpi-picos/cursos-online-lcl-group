@@ -22,6 +22,7 @@ public class CursoAlunoTest {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(conexao);
         Curso curso = new Curso(0, null, 0, null, null);
         Aluno aluno = new Aluno(0, null, null, null);
+        Curso cursoTest = autenticacaoDao.autenticarCurso("ADS");
 
         //* metodo cadastrar funcionando
         // CursoAluno cursoAluno = new CursoAluno(null, null, (float) 0); // pega o curso_aluno que vc ja cadastrou na tabela e cadastra/autera a nota
@@ -33,7 +34,7 @@ public class CursoAlunoTest {
 
         //* metodo consultar funcionando 
 
-        //cursoAlunoDao.consultar();
+        //cursoAlunoDao.consultar();        
 
         // * metodo remover funcionanddo
         // CursoAluno cursoRemover = new CursoAluno(null, null, (float) 0);
@@ -44,17 +45,16 @@ public class CursoAlunoTest {
         // System.out.println("Remoção realizada com sucesso! " + idCursoRemover);
 
         // * metodo totaldeAlunosMatriculadosCurso
-        Curso cursoTest = autenticacaoDao.autenticarCurso("ADS");
         //cursoAlunoDao.totaldeAlunosMatriculadosCurso(cursoTest);
 
         //* metodo media Alunos
-        cursoAlunoDao.mediaAlunos(cursoTest);
+        // cursoAlunoDao.mediaAlunos(cursoTest);
 
         //* metodo porcentagem de alunos aprovados
-        cursoAlunoDao.porcentagemAlunosAprovados(cursoTest);
+        // cursoAlunoDao.porcentagemAlunosAprovados(cursoTest);
 
         //* metodo porcentagem de alunos reprovados
-        cursoAlunoDao.porcentagemAlunosReprovados(cursoTest);
+        // cursoAlunoDao.porcentagemAlunosReprovados(cursoTest);
         
         // //* metodo alterar nota funcionando
         // CursoAluno cursoAlterarNota = new CursoAluno(null, null, (float) 0);
@@ -66,13 +66,19 @@ public class CursoAlunoTest {
         // System.out.println("Nota cadastrada com sucesso!");
 
         //* metodo de cursos concluídos
-        CursoAluno cursoCursosConcluidos = new CursoAluno();
+        // CursoAluno cursoCursosConcluidos = new CursoAluno();
         
-        cursoAlunoDao.cursosConcluidos(1);
+        // cursoAlunoDao.cursosConcluidos(1);
 
-        System.out.println("Curso concluído com sucesso!");
+        // System.out.println("Curso concluído com sucesso!");
         
+        // * metodo consultar boletim
+        //no alunoTest 👇 voce muda o idAluno para o id do aluno que vc quer saber o boletim 
+        // Aluno alunoTest = new Aluno(1, null, null, null);
+        // cursoAlunoDao.consultarBoletimAluno(alunoTest);
 
+        // * metodo visualizar perfil do aluno
+        // cursoAlunoDao.VisualizarPerfilAluno(alunoTest);
      }
 
 }

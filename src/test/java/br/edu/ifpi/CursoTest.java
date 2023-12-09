@@ -44,55 +44,54 @@ public class CursoTest {
       // System.out.println("Remoção realizada com sucesso! " + resultadoRemocao);
 
 
-//* metodo consultar
-      //    System.out.println("Digite o id do curso que deseja alterar:");
-      //   int idAlterar = scanner.nextInt();
-      //   scanner.nextLine();
+//* metodo alterar funcionando
+//          System.out.println("Digite o id do curso que deseja alterar:");
+//         int idAlterar = scanner.nextInt();
+//         scanner.nextLine();
 
-      //   Curso alterCurso = new Curso(idAlterar, null, 0, null, null);
-      //   alterCurso.setId(idAlterar);
+//         Curso alterCurso = new Curso(idAlterar, null, 0, null, null);
+//         alterCurso.setId(idAlterar);
         
-      //   System.out.println("Novo Nome: ");
-      //   alterCurso.setNome(scanner.nextLine());
+//         System.out.println("Novo Nome: ");
+//         alterCurso.setNome(scanner.nextLine());
 
-      //   System.out.println("Nova Carga Horaria: ");
-      //   int cargHoraria = scanner.nextInt();
-      //   scanner.nextLine();
-      //   alterCurso.setCargaHoraria(cargHoraria);
+//         System.out.println("Nova Carga Horaria: ");
+//         int cargHoraria = scanner.nextInt();
+//         scanner.nextLine();
+//         alterCurso.setCargaHoraria(cargHoraria);
 
-// PARTE DE ALTERAR O STATUS DO ALUNO
-        // Solicitar ao usuário que insira um número correspondente ao status
-      //   System.out.println("Digite o número correspondente ao novo status do curso:");
-      //   System.out.println("1 - ABERTO");
-      //   System.out.println("2 - FECHADO");
-      //   System.out.println("3 - CONCLUIDO");
+// ///PARTE PARA ALTERAR O STATUS DO ALUNO
+//         System.out.println("Digite o número correspondente ao novo status do curso:");
+//         System.out.println("1 - ABERTO");
+//         System.out.println("2 - FECHADO");
+//         System.out.println("3 - CONCLUIDO");
 
-      //   // Ler a escolha do usuário
-      //   int escolha = scanner.nextInt();
+//         int escolha = scanner.nextInt();
 
-      //   // Converter a escolha para o enum Status
-      //   switch (escolha) {
-      //       case 1:
-      //           alterCurso.setStatus(StatusCurso.ABERTO);
-      //           break;
-      //       case 2:
-      //           alterCurso.setStatus(StatusCurso.FECHADO);
-      //           break;
-      //       case 3:
-      //           alterCurso.setStatus(StatusCurso.CONCLUIDO);
-      //           break;
-      //       default:
-      //           System.out.println("Opção inválida. O status não foi alterado.");
-      //           return;
-      //   }
+//         switch (escolha) {
+//             case 1:
+//                 alterCurso.setStatus(StatusCurso.ABERTO);
+//                 break;
+//             case 2:
+//                 alterCurso.setStatus(StatusCurso.FECHADO);
+//                 break;
+//             case 3:
+//                 alterCurso.setStatus(StatusCurso.CONCLUIDO);
+//                 break;
+//             default:
+//                 System.out.println("Opção inválida. O status não foi alterado.");
+//                 return;
+//         }
 
-      //   System.out.println("Digite o ID do novo professor: ");
-      //   int profId = scanner.nextInt();
-      //   scanner.nextLine();
-      // Professor professor = new Professor(profId, null, null);
-      //   alterCurso.setProfessor(professor);
+//         System.out.println("Digite o ID do novo professor: ");
+//         int profId = scanner.nextInt();
+//         scanner.nextLine();
+//       Professor professor = new Professor(profId, null, null);
+//         alterCurso.setProfessor(professor);
 
-      //   cursoDao.alterar(alterCurso);
-
+//         cursoDao.alterar(alterCurso);
+      // * metodo Visualizar Perfil do Professor funcionando
+      // Professor professorTest = new Professor(5, null, null);
+      // cursoDao.VisualizarPerfilProfessor(professorTest);
    }
 }

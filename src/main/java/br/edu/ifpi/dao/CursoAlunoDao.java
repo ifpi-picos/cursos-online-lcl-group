@@ -10,6 +10,7 @@ import java.util.List;
 import br.edu.ifpi.entidades.Aluno;
 import br.edu.ifpi.entidades.Curso;
 import br.edu.ifpi.entidades.CursoAluno;
+import br.edu.ifpi.entidades.Professor;
 
 public class CursoAlunoDao implements Dao<CursoAluno> {
     private Connection conexao;
@@ -235,7 +236,7 @@ System.out.println("___________Lista de alunos maticulados__________");
             String nomeCurso = resultSet.getString("curso_nome");
             float nota = resultSet.getFloat("nota");
 
-            System.out.println("Curso: " + nomeCurso + ", nota: " + nota);
+            System.out.println("Curso: " + nomeCurso + " | nota: " + nota);
         }
     }
 

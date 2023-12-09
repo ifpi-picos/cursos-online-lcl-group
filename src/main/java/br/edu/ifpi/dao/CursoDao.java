@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifpi.entidades.Curso;
+import br.edu.ifpi.entidades.Professor;
 import br.edu.ifpi.enums.StatusCurso;
 
 public class CursoDao implements Dao<Curso> {
@@ -97,7 +98,23 @@ public class CursoDao implements Dao<Curso> {
 
         return 0;
     }
+        public void VisualizarPerfilProfessor(Professor professor) throws SQLException {
+        String sql = "SELECT * FROM professor WHERE id = ?";
 
+        PreparedStatement stm = conexao.prepareStatement(sql);
+        stm.setInt(1, professor.getIdProfessor());
+        ResultSet resultSet = stm.executeQuery();
+
+        System.out.println("\n_____ Perfil do Professor _____");
+        while (resultSet.next()) {
+            String nome = resultSet.getString("nome");
+            String email = resultSet.getString("email");
+
+            System.out.println("Nome: " + nome);
+            System.out.println("Email: " + email);
+
+        }
+    }
     
 
 }
