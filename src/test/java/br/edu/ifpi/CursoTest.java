@@ -60,7 +60,7 @@ public class CursoTest {
 //         scanner.nextLine();
 //         alterCurso.setCargaHoraria(cargHoraria);
 
-// ///PARTE PARA ALTERAR O STATUS DO ALUNO
+// ///PARTE PARA ALTERAR O STATUS DO CURSO
 //         System.out.println("Digite o número correspondente ao novo status do curso:");
 //         System.out.println("1 - ABERTO");
 //         System.out.println("2 - FECHADO");
@@ -90,7 +90,8 @@ public class CursoTest {
 //         alterCurso.setProfessor(professor);
 
 //         cursoDao.alterar(alterCurso);
-      // * metodo Visualizar Perfil do Professor funcionando
+
+      // * metodo Visualizar Perfil do Professor 
       // Professor professorTest = new Professor(5, null, null);
       // cursoDao.VisualizarPerfilProfessor(professorTest);
    }

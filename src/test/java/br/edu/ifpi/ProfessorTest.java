@@ -26,14 +26,14 @@ public class ProfessorTest {
         CursoAlunoDao CursoAlunoDao = new CursoAlunoDao(conexao);
         Scanner scanner = new Scanner(System.in);
 
-    // * metodo cadastrar funcionando 
-        Professor novoProfessor = new Professor("Jesiel", "jesiel@gmail.com");
-        int resultadoCadastro = professorDao.cadastrar(novoProfessor);
+    // * metodo cadastrar
+        // Professor novoProfessor = new Professor("Jesiel", "jesiel@gmail.com");
+        // int resultadoCadastro = professorDao.cadastrar(novoProfessor);
 
-    // * metodo consultar funcionando
+    // * metodo consultar 
         //List<Professor> professoresCadastrados = professorDao.consultar();
 
-    // * metodo remover funcionando
+    // * metodo remover
 
         //Professor professorRemover = new Professor("Rafael", "rafael@gmail.com");
         //System.out.println("Digite o ID do curso que deseja remover: ");
@@ -45,7 +45,7 @@ public class ProfessorTest {
 
         //System.out.println("Remoção realizada com sucesso! " + resultadoRemocao);
 
-    // * metodo alterar funcionando
+    // * metodo alterar
         //System.out.println("Digite o id do professor que deseja alterar:");
         //int alterarId = scanner.nextInt();
         //scanner.nextLine();
@@ -63,7 +63,7 @@ public class ProfessorTest {
 
         //List<Professor> professoresCadastrados = professorDao.consultar();
 
-    //* metodo cadastrarNotas funcionando
+    //* metodo cadastrarNotas
         // CursoAluno cursoAluno = new CursoAluno(null, null, (float) 0); // pega o curso_aluno que vc ja cadastrou na tabela e cadastra/autera a nota
         // cursoAluno.setIdCurso(3); //pega o id do curso
         // cursoAluno.setIdAluno(1); // pega o id do aluno
@@ -73,7 +73,7 @@ public class ProfessorTest {
         // int rowsAffected = professorDao.cadastrarNotas(cursoAluno, (float) 10);
         // System.out.println("Cadastro realizado com sucesso!! " + rowsAffected);
 
-    //* metodo exibirCursosMinistrados funcionando
+    //* metodo exibirCursosMinistrados
 
         //int idProfessorExistente = 2;  //ID real do professor que deseja saber os cursos ministrados
         //! se quiser crie um scanner para pedir o id no terminal

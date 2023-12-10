@@ -21,16 +21,16 @@ public class AlunoTest {
         Scanner scanner = new Scanner(System.in);
     
 
-// * metodo cadastrar aluno funcionando
+// * metodo cadastrar aluno
         //Aluno novoAluno = new Aluno("Livya", "livya@gmail.com", StatusAluno.ATIVO);
         //int resultadoCadastro = alunoDao.cadastrar(novoAluno);
         //Aluno Livya = autenticacaoDao.autenticarAluno("livya@gmail.com");
         
-// * metodo consultar funcionando
+// * metodo consultar 
         //List<Aluno> alunosConsultados = alunoDao.consultar();
 
 
-//* Metodo remover funcionando 
+//* Metodo remover 
         //Aluno aluno_remover = new Aluno(0, null, null, null);
         //System.out.println("Digite o id do aluno que deseja remover: ");
         //int id_remove = scanner.nextInt();
@@ -39,7 +39,7 @@ public class AlunoTest {
 
         //alunoDao.remover(aluno_remover);
         
-//* metodo alterar funcionando    
+//* metodo alterar  
 //         System.out.println("Digite o id do aluno que deseja alterar:");
 //         int idAlterar = scanner.nextInt();
 //         scanner.nextLine();
@@ -54,15 +54,12 @@ public class AlunoTest {
 //         alterAluno.setEmail(scanner.next());
 
 // // PARTE DE ALTERAR O STATUS DO ALUNO
-//         // Solicitar ao usuário que insira um número correspondente ao status
 //         System.out.println("Digite o número correspondente ao novo status do aluno:");
 //         System.out.println("1 - ATIVO");
 //         System.out.println("2 - INATIVO");
 
-//         // Ler a escolha do usuário
 //         int escolha = scanner.nextInt();
 
-//         // Converter a escolha para o enum Status
 //         switch (escolha) {
 //             case 1:
 //                 alterAluno.setStatus(StatusAluno.ATIVO);
@@ -75,7 +72,6 @@ public class AlunoTest {
 //                 return; // Se a escolha for inválida, encerra o programa ou faz alguma outra manipulação apropriada.
 //         }
 
-//         // Exibir o novo status
 //         System.out.println("Novo status do aluno: " + alterAluno.getStatus());
 
 //         alunoDao.alterar(alterAluno);
