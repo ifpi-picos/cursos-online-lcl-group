@@ -9,7 +9,7 @@ import java.util.List;
 
 import br.edu.ifpi.entidades.Curso;
 import br.edu.ifpi.entidades.Professor;
-import br.edu.ifpi.enums.StatusCurso;
+import br.edu.ifpi.enums.StatusCursoAluno;
 
 public class CursoDao implements Dao<Curso> {
     private Connection conexao;
@@ -52,7 +52,7 @@ public class CursoDao implements Dao<Curso> {
                 int idCurso = resultSet.getInt("id");
                 String nome = resultSet.getString("nome");
                 int cargaHoraria = resultSet.getInt("carga_horaria");
-                StatusCurso status = StatusCurso.valueOf(resultSet.getString("status"));
+                StatusCursoAluno status = StatusCursoAluno.valueOf(resultSet.getString("status"));
                 int idProfessor = resultSet.getInt("id_professor");
 
                 System.out.println("id: " + idCurso + ", nome: " + nome + ", carga horária: " + cargaHoraria

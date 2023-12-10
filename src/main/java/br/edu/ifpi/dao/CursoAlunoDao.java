@@ -174,10 +174,12 @@ System.out.println("___________Lista de alunos maticulados__________");
     }
 
     public void cursosMatriculados (Aluno aluno) throws SQLException {
-        String sql = "SELECT curso.nome as curso_nome, curso.id as id_curso " +
+        String sql = "SELECT curso.nome as curso_nome," + //
+                    "curso.id as id_curso " +
                     "FROM curso_aluno " +
-                    "JOIN curso on curso.id = curso_aluno.id_curso " +
-                    "WHERE curso_aluno.id_aluno = ? AND StatusMatricula = 'MATRICULADO' ";
+                    "JOIN curso on curso.id = curso_aluno.id_curso " + 
+                    "JOIN aluno on aluno.id = curso_aluno.id_aluno " +
+                    "WHERE curso_aluno.id_aluno = ? AND aluno.status = 'ATIVO' ";
 
         PreparedStatement stm = conexao.prepareStatement(sql);
         stm.setInt(1, aluno.getidAluno());
@@ -192,17 +194,23 @@ System.out.println("___________Lista de alunos maticulados__________");
         }
     }
 
-    public void cursosConcluidos (int aluno) throws SQLException {
-        String sql =  "SELECT id_curso as alunos FROM curso_aluno WHERE id_aluno = ? AND nota >= 7";
+    public void cursosConcluidos (CursoAluno cursoAluno) throws SQLException {
+        String sql = "SELECT curso.nome as curso_nome," +
+                    "aluno.nome as aluno_nome " +
+                    "FROM curso_aluno " +
+                    "join curso on curso.id = curso_aluno.id_curso " +
+                    "join aluno on aluno.id = curso_aluno.id_aluno " +
+                    "WHERE curso_aluno.id_aluno = ? AND curso_aluno.status = 'CONCLUIDO'";
 
         PreparedStatement stm = conexao.prepareStatement(sql);
-        stm.setInt(1, aluno);
+        stm.setInt(1, cursoAluno.getIdAluno());
         ResultSet resultSet = stm.executeQuery();
-
-        System.out.println("\n_____ Cursos concluídos _____");
+        
         while (resultSet.next()) {
-            int idAluno = resultSet.getInt("alunos");
-            System.out.println("Aluno ID: " + idAluno);
+            String nomeCurso = resultSet.getString("curso_nome");
+            String nomeAluno = resultSet.getString("aluno_nome");
+            System.out.println("\n_____ Curso concluído por "+ nomeAluno +": _____");
+            System.out.println("Nome: " + nomeCurso);
         }
     }
 

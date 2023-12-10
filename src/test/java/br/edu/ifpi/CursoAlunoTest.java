@@ -12,7 +12,7 @@ import br.edu.ifpi.entidades.Aluno;
 import br.edu.ifpi.entidades.Curso;
 import br.edu.ifpi.entidades.Professor;
 import br.edu.ifpi.enums.StatusAluno;
-import br.edu.ifpi.enums.StatusCurso; 
+import br.edu.ifpi.enums.StatusCursoAluno; 
 import br.edu.ifpi.entidades.CursoAluno;
 
 public class CursoAlunoTest {
@@ -22,7 +22,7 @@ public class CursoAlunoTest {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(conexao);
         Curso curso = new Curso(0, null, 0, null, null);
         Aluno aluno = new Aluno(0, null, null, null);
-        Curso cursoTest = autenticacaoDao.autenticarCurso("ADS");
+        //Curso cursoTest = autenticacaoDao.autenticarCurso("ADS");
 
         //* metodo cadastrar funcionando
         // CursoAluno cursoAluno = new CursoAluno(null, null, (float) 0); // pega o curso_aluno que vc ja cadastrou na tabela e cadastra/autera a nota
@@ -57,24 +57,26 @@ public class CursoAlunoTest {
         // cursoAlunoDao.porcentagemAlunosReprovados(cursoTest);
         
         // //* metodo alterar nota funcionando
-        // CursoAluno cursoAlterarNota = new CursoAluno(null, null, (float) 0);
+        //  CursoAluno cursoAlterarNota = new CursoAluno(null, null, null, (float) 0);
         // cursoAlterarNota.setIdCurso(3);
-        // cursoAlterarNota.setIdAluno(7);
+        //  cursoAlterarNota.setIdAluno(1);
         // Double nota = 4.5;
 
         // cursoAlunoDao.inserirNota(cursoAlterarNota, nota);
         // System.out.println("Nota cadastrada com sucesso!");
 
-        //* metodo de cursos concluídos
-        // CursoAluno cursoCursosConcluidos = new CursoAluno();
-        
-        // cursoAlunoDao.cursosConcluidos(1);
+        // * cursos matriculado
+        Aluno alunoT = new Aluno(1, null, null, null);
+        cursoAlunoDao.cursosMatriculados(alunoT);
 
-        // System.out.println("Curso concluído com sucesso!");
+        //* metodo cursos concluídos
+         CursoAluno cursoConcluido = new CursoAluno(null, null, null, (float) 0);
+         cursoConcluido.setIdAluno(8);
         
+        cursoAlunoDao.cursosConcluidos(cursoConcluido);
         // * metodo consultar boletim
         //no alunoTest 👇 voce muda o idAluno para o id do aluno que vc quer saber o boletim 
-        // Aluno alunoTest = new Aluno(1, null, null, null);
+        //Aluno alunoTest = new Aluno(1, null, null, null);
         // cursoAlunoDao.consultarBoletimAluno(alunoTest);
 
         // * metodo visualizar perfil do aluno

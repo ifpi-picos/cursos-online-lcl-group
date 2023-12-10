@@ -10,6 +10,7 @@ import br.edu.ifpi.entidades.Curso;
 import br.edu.ifpi.entidades.Professor;
 import br.edu.ifpi.enums.StatusAluno;
 import br.edu.ifpi.enums.StatusCurso;
+import br.edu.ifpi.enums.StatusCursoAluno;
 
 public class AutenticacaoDao {
     private Connection conexao;

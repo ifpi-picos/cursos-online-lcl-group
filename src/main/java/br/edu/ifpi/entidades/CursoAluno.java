@@ -4,24 +4,26 @@ import java.sql.SQLException;
 
 import br.edu.ifpi.dao.Conexao;
 import br.edu.ifpi.dao.CursoAlunoDao;
-import br.edu.ifpi.enums.StatusMatricula;
+import br.edu.ifpi.enums.StatusCursoAluno;
 
 public class CursoAluno {
     private Curso curso;
     private Aluno aluno;
     private int idCurso;
     private int idAluno;
-    private StatusMatricula status;
+    private StatusCursoAluno status;
     private Float nota;
 
-    public CursoAluno(Curso curso, Aluno aluno, Float nota) {
+    public CursoAluno(Curso curso, Aluno aluno, StatusCursoAluno status, Float nota) {
         this.curso = curso;
         this.aluno = aluno;
+        this.status = status;
         this.nota = nota;
     }
-    public CursoAluno(int idCurso, int idAluno, float nota){
+    public CursoAluno(int idCurso, int idAluno, StatusCursoAluno status, float nota) {
         this.idCurso = idCurso;
         this.idAluno = idAluno;
+        this.status = status;
         this.nota = nota;
     }
     public CursoAluno(){
@@ -44,11 +46,11 @@ public class CursoAluno {
         this.aluno = aluno;
     }
 
-    public StatusMatricula getStatus() {
+    public StatusCursoAluno getStatus() {
         return status;
     }
 
-    public void setStatus(StatusMatricula status) {
+    public void setStatus(StatusCursoAluno status) {
         this.status = status;
     }
 

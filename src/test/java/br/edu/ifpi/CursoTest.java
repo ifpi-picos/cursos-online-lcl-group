@@ -10,7 +10,7 @@ import br.edu.ifpi.dao.CursoDao;
 import br.edu.ifpi.entidades.Aluno;
 import br.edu.ifpi.entidades.Curso;
 import br.edu.ifpi.entidades.Professor;
-import br.edu.ifpi.enums.StatusCurso;
+import br.edu.ifpi.enums.StatusCursoAluno;
 
 public class CursoTest {
    public static void main(String[] args) throws SQLException {
