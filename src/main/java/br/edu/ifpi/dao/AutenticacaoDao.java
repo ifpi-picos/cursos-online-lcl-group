@@ -99,5 +99,3 @@ public class AutenticacaoDao {
         return null;
     }
 }
-
-// Livya Kelly ás 04:45 quase desistindo...

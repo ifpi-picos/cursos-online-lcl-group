@@ -53,7 +53,7 @@ public class CursoAlunoDao implements Dao<CursoAluno> {
         try {
             PreparedStatement stm = conexao.prepareStatement(sql);
             ResultSet resultSet = stm.executeQuery();
-System.out.println("___________Lista de alunos maticulados__________");
+            System.out.println("___________Lista de alunos matriculados__________");
             while (resultSet.next()) {
                 int idCurso = resultSet.getInt("id_curso");
                 int idAluno = resultSet.getInt("id_aluno");

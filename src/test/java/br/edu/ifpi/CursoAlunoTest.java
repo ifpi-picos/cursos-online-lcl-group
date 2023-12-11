@@ -83,5 +83,4 @@ public class CursoAlunoTest {
         // * metodo visualizar perfil do aluno
         // cursoAlunoDao.VisualizarPerfilAluno(alunoTest);
      }
-
 }

@@ -31,6 +31,7 @@ public class Professor {
     public int getIdProfessor() {
         return idProfessor;
     }
+
     public void setIdProfessor(int idProfessor) {
         this.idProfessor = idProfessor;
     }
@@ -55,5 +56,4 @@ public class Professor {
         CursoDao cursoDao = new CursoDao(Conexao.getConnection());
         cursoDao.cadastrar(curso);
     }
-
 }

@@ -62,7 +62,6 @@ public class AlunoDao implements Dao<Aluno> {
         return alunos;
     }
 
-
     @Override
     public int remover(Aluno aluno) {
         String sqlDelete = "DELETE FROM aluno WHERE ID = ?";
@@ -97,4 +96,3 @@ public class AlunoDao implements Dao<Aluno> {
         return 0;
     }
 }
-

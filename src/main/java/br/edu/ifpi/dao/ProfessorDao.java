@@ -11,7 +11,6 @@ import br.edu.ifpi.entidades.Curso;
 import br.edu.ifpi.entidades.CursoAluno;
 import br.edu.ifpi.entidades.Professor;
 
-
 public class ProfessorDao implements Dao<Professor> {
     private Connection conexao;
 
@@ -36,7 +35,6 @@ public class ProfessorDao implements Dao<Professor> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return 0;
     }
 

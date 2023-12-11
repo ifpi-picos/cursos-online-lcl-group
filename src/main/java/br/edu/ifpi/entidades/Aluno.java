@@ -1,4 +1,5 @@
 package br.edu.ifpi.entidades;
+
 import java.sql.SQLException;
 
 import br.edu.ifpi.dao.Conexao;
@@ -48,7 +49,6 @@ public class Aluno {
         this.email = email;
     }
 
-
     public String getStatus() {
         return this.status == StatusAluno.ATIVO? "ATIVO" : "INATIVO";    
     }
@@ -94,5 +94,4 @@ public class Aluno {
         cursoAlunoDao.VisualizarPerfilAluno(this);
         cursoAlunoDao.consultarBoletimAluno(this);
     }
-
 }

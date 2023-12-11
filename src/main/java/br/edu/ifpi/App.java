@@ -13,7 +13,6 @@ import br.edu.ifpi.dao.ProfessorDao;
 
 import br.edu.ifpi.entidades.Aluno;
 
-
 public class App {
     public static void main(String[] args) throws SQLException {
 
@@ -35,7 +34,6 @@ public class App {
         //Professor joaoPaulo = autenticacaoDao.autenticarProfessor("joaopaulo@gmail.com");
 
         //List<Aluno> alunosConsultados = alunoDao.consultar();
-
 
         //int resultadoRemocao = alunoDao.remover();
 

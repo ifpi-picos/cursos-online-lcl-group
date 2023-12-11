@@ -103,5 +103,4 @@ public class Curso {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.porcentagemAlunosReprovados(this);
     }
-    
 }

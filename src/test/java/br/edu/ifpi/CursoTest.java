@@ -43,7 +43,6 @@ public class CursoTest {
 
       // System.out.println("Remoção realizada com sucesso! " + resultadoRemocao);
 
-
 //* metodo alterar funcionando
 //          System.out.println("Digite o id do curso que deseja alterar:");
 //         int idAlterar = scanner.nextInt();

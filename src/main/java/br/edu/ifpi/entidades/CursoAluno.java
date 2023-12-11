@@ -20,12 +20,14 @@ public class CursoAluno {
         this.status = status;
         this.nota = nota;
     }
+
     public CursoAluno(int idCurso, int idAluno, StatusCursoAluno status, float nota) {
         this.idCurso = idCurso;
         this.idAluno = idAluno;
         this.status = status;
         this.nota = nota;
     }
+
     public CursoAluno(){
      //criação de constructor vazio para não passar alguns parametros
     }
@@ -64,9 +66,11 @@ public class CursoAluno {
 
     public void consultarBoletimAluno(Aluno aluno2) {
     }
+
     public void setIdCurso(int idCurso) {
         this.idCurso = idCurso;
     }
+
     public void setIdAluno(int idAluno) {
         this.idAluno = idAluno;
     }
@@ -98,5 +102,4 @@ public class CursoAluno {
         CursoAlunoDao cursoAlunoDao = new CursoAlunoDao(Conexao.getConnection());
         cursoAlunoDao.cadastrarNotas(cursoAluno, nota);
     }
-
 }

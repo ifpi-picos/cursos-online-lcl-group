@@ -20,7 +20,6 @@ public class AlunoTest {
         AutenticacaoDao autenticacaoDao = new AutenticacaoDao(conexao);
         Scanner scanner = new Scanner(System.in);
     
-
 // * metodo cadastrar aluno
         //Aluno novoAluno = new Aluno("Livya", "livya@gmail.com", StatusAluno.ATIVO);
         //int resultadoCadastro = alunoDao.cadastrar(novoAluno);
@@ -28,7 +27,6 @@ public class AlunoTest {
         
 // * metodo consultar 
         //List<Aluno> alunosConsultados = alunoDao.consultar();
-
 
 //* Metodo remover 
         //Aluno aluno_remover = new Aluno(0, null, null, null);
@@ -76,5 +74,5 @@ public class AlunoTest {
 
 //         alunoDao.alterar(alterAluno);
 
-    }
+  }
 }

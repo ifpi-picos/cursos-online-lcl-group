@@ -36,7 +36,6 @@ public class CursoDao implements Dao<Curso> {
             e.printStackTrace();
         }
         return 0;
-
     }
 
     @Override
@@ -75,7 +74,6 @@ public class CursoDao implements Dao<Curso> {
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         }
-
         return 0;
     }
 
@@ -95,9 +93,9 @@ public class CursoDao implements Dao<Curso> {
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         }
-
         return 0;
     }
+
         public void VisualizarPerfilProfessor(Professor professor) throws SQLException {
         String sql = "SELECT * FROM professor WHERE id = ?";
 
@@ -115,6 +113,4 @@ public class CursoDao implements Dao<Curso> {
 
         }
     }
-    
-
 }

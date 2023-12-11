@@ -88,8 +88,6 @@ public class ProfessorTest {
         // System.out.println("Status: " + curso.getStatus());
         // System.out.println("ID: " + curso.getId());
         // System.out.println("-----");
-    
-
 
     }
 }
